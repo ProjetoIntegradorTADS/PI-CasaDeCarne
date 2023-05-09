@@ -397,6 +397,8 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void txtNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroKeyTyped
         /**
          * Validacao das teclas que sao permitidas no campo txtNumero
+         * 
+         * e Teste e.e
          */
         
         char c = evt.getKeyChar();
