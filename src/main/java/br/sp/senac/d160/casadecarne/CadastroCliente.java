@@ -398,7 +398,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         /**
          * Validacao das teclas que sao permitidas no campo txtNumero
          * 
-         * e Teste e.e
+         * 
          */
         
         char c = evt.getKeyChar();
@@ -428,7 +428,11 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_fmtCPFActionPerformed
 
     private void fmtCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fmtCPFFocusLost
-     if(fmtCPF.getValue() == null || fmtCPF.getValue().toString().trim().isEmpty()) {
+    /**
+     * Validacao do campo CPF como Obrigatorio
+     */
+        
+        if(fmtCPF.getValue() == null || fmtCPF.getValue().toString().trim().isEmpty()) {
         this.lblCPFInfo.setText("* Campo Obrigatório");
         lblCPFInfo.setVisible(true);
      }else{
