@@ -388,6 +388,10 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void fmtCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fmtCEPActionPerformed
+        /**
+         * Mais uma alteracao para teste
+         */
+        
         if (fmtCEP.getText().length() > 0) {
             lblCEPInfo.setVisible(false);
         } else {
