@@ -395,6 +395,10 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_fmtCEPActionPerformed
 
     private void txtNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroKeyTyped
+        /**
+         * Validacao das teclas que sao permitidas no campo txtNumero
+         */
+        
         char c = evt.getKeyChar();
         if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
