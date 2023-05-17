@@ -9,5 +9,7 @@ package DAO;
  * @author SALOMAO.FLIMA
  */
 public class PedidoDAO {
-    
+    static String URL = "jdbc:mysql://localhost:3306/AQUI É O LINK DO BANCO DE DADOS";
+    static String Login = "root";
+    static String Senha = "";
 }
