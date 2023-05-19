@@ -4,6 +4,8 @@
  */
 package br.sp.senac.d160.TelasCasaDeCarnes;
 
+import DAO.CadastroCliente;
+
 /**
  *
  * @author Filri

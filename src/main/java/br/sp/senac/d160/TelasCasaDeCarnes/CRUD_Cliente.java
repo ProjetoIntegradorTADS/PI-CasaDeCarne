@@ -4,6 +4,8 @@
  */
 package br.sp.senac.d160.TelasCasaDeCarnes;
 
+import DAO.CadastroCliente;
+
 /**
  *
  * @author Filri
@@ -28,7 +30,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblCliente = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -42,7 +44,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações do Cliente"));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -58,9 +60,9 @@ public class CRUD_Cliente extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable2.setColumnSelectionAllowed(true);
-        jScrollPane2.setViewportView(jTable2);
-        jTable2.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        tblCliente.setColumnSelectionAllowed(true);
+        jScrollPane2.setViewportView(tblCliente);
+        tblCliente.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         jButton1.setFont(new java.awt.Font("sansserif", 3, 18)); // NOI18N
         jButton1.setText("Alterar");
@@ -230,7 +232,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblCliente;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

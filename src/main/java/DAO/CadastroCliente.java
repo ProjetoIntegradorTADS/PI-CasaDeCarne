@@ -2,9 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package br.sp.senac.d160.TelasCasaDeCarnes;
+package DAO;
 
+import Classes.Cliente;
+import br.sp.senac.d160.TelasCasaDeCarnes.CRUD_Cliente;
+import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 /**
  *
@@ -37,7 +41,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtEndereco = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnCadastro = new javax.swing.JButton();
         fmtCPF = new javax.swing.JFormattedTextField();
         lblInfo = new javax.swing.JLabel();
         lblEndereco1 = new javax.swing.JLabel();
@@ -59,7 +63,7 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 13), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel1.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentRemoved(java.awt.event.ContainerEvent evt) {
                 jPanel1ComponentRemoved(evt);
@@ -121,7 +125,12 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Cadastrar");
+        btnCadastro.setText("Cadastrar");
+        btnCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroActionPerformed(evt);
+            }
+        });
 
         try {
             fmtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -266,7 +275,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                                 .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblCEPInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1)
+                            .addComponent(btnCadastro)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(29, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -351,7 +360,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                         .addComponent(fmtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(btnCadastro)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2)))
@@ -565,6 +574,25 @@ public class CadastroCliente extends javax.swing.JFrame {
         cliente.setDefaultCloseOperation(Estoque.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
+            ArrayList<Cliente> listaItens = new ArrayList<Cliente>();
+            
+        if(tblCliente.getRowCount()>0){
+                for(int i=0;i<tblCliente.getRowCount();i++){
+                   Cliente item = new Cliente();
+
+                    item.setIdProduto(Integer.parseInt(tblCliente.getValueAt(i, 0).toString()));
+                    item.setDscProduto(tblCliente.getValueAt(i, 1).toString());
+                    item.setQtdProduto(Integer.parseInt(tblCliente.getValueAt(i, 2).toString()));
+                    item.setVlrProduto(Double.parseDouble(tbmCliente.getValueAt(i, 3).toString()));
+
+                    //Adiciono o objeto à listaItens
+                    listaItens.add(item);
+
+                }
+        }
+    }//GEN-LAST:event_btnCadastroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -602,11 +630,11 @@ public class CadastroCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCadastro;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.JFormattedTextField fmtCEP;
     private javax.swing.JFormattedTextField fmtCPF;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

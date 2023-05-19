@@ -15,10 +15,7 @@ import java.sql.Statement;
 /**
  *
  * @author SALOMAO.FLIMA
- */
-
-       
-
+ */ 
 public class ClienteDAO {
     
     static String URL = "jdbc:mysql://localhost:3306/CasaDeCarne";
