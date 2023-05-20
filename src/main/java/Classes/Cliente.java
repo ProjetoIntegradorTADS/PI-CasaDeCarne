@@ -7,12 +7,16 @@ import java.util.ArrayList;
  * 
  */
 public class Cliente {
+
+    public static boolean cadastrar(Cliente objCliente) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
         private String nome;
         private String endereco;
-        private String cPF;
-        private String cEP;
+        private String cpf;
+        private String cep;
         private String email;
-        private int numEndereco;
+        private String numEndereco;
         private boolean sexo;
         private String complemento;
         private int idCliente;
@@ -31,11 +35,12 @@ public class Cliente {
             
         }
         
-        public Cliente(String nome, String endereco, String CPF, String CEP, int numEndereco, Boolean sexo, String complemento){
+        public Cliente(String nome, String endereco, String cpf, String cep,String email, String numEndereco, Boolean sexo, String complemento){
          this.nome = nome;
          this.endereco = endereco;
-         this.cPF = CPF;
-         this.cEP = CEP;
+         this.cep = cpf;
+         this.cep = cep;
+         this.email = email;
          this.numEndereco = numEndereco;
          this.sexo = sexo;
          this.complemento = complemento;
@@ -63,35 +68,35 @@ public class Cliente {
             this.endereco = endereco;
         }
 
-        public String getCPF(String toString) {
-            return cPF;
+        public String getCpf(String cpf) {
+            return cpf;
         }
 
-        public void setCPF(String CPF) {
-            this.cPF = CPF;
+        public void setCpf(String cpf) {
+            this.cpf = cpf;
         }
 
-        public String getCEP(String toString) {
-            return cEP;
+        public String getCep(String cep) {
+            return cep;
         }
 
-        public void setCEP(String CEP) {
-            this.cEP = CEP;
+        public void setCep(String cep) {
+            this.cep = cep;
         }
 
-        public String getEmail() {
+        public String getEmail(String email) {
             return email;
         }
 
-        public void setEmail(String Email) {
-            this.email = Email;
+        public void setEmail(String email) {
+            this.email = email;
         }
 
-        public int getNumEndereco(String toString) {
+        public String getNumEndereco(String numero) {
             return numEndereco;
         }
 
-        public void setNumEndereco(int numEndereco) {
+        public void setNumEndereco(String numEndereco) {
             this.numEndereco = numEndereco;
         }
 

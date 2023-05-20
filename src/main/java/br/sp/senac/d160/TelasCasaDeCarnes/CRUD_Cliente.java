@@ -51,15 +51,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
             new String [] {
                 "Nome", "CPF", "Sexo", "CEP", "Endereço", "Nº", "Complemento", "Email"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ));
         tblCliente.setColumnSelectionAllowed(true);
         jScrollPane2.setViewportView(tblCliente);
         tblCliente.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);

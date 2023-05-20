@@ -22,19 +22,19 @@ public class ClienteDAO {
     static String Login = "root";
     static String Senha = "A@1090073061a";
     
-        public static boolean salvar(Cliente obj) {
+        public static boolean cadastrar(Cliente obj) {
         boolean retorno = false;
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexao = DriverManager.getConnection(URL, Login, Senha);
             
-            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO Cliente (Nome,Endereco,CPF,CEP,Email,Numero,Sexo) VALUES (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            comandoSQL.setInt(1, obj.getIdCliente());
+            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO Cliente (Nome,Endereco,Cpf,Cep,Email,Numero,Sexo) VALUES (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            comandoSQL.setInt(0, obj.getIdCliente());
             comandoSQL.setString(1, obj.getNome());
             comandoSQL.setString(2, obj.getEndereco());
-            comandoSQL.setString(3, obj.getcPF());
-            comandoSQL.setString(4, obj.getcEP());
+            comandoSQL.setString(3, obj.getCpf());
+            comandoSQL.setString(4, obj.getCep());
             comandoSQL.setString(5, obj.getEmail());
             comandoSQL.setInt(6, obj.getNumEndereco(tblCliente.getValueAt(i, 5).toString()));
             comandoSQL.setBoolean(7, obj.getSexo(tblCliente.getValueAt(i, 6).toString()));
@@ -49,8 +49,8 @@ public class ClienteDAO {
                         comandoSQLItem.setInt(1, item.getIdCliente());
                         comandoSQLItem.setString(2, item.getNome());
                         comandoSQLItem.setString(3, item.getEndereco());
-                        comandoSQLItem.setString(4, item.getcPF());
-                        comandoSQLItem.setString(5,item.getcEP());
+                        comandoSQLItem.setString(4, item.getCpf());
+                        comandoSQLItem.setString(5,item.getCep());
                         comandoSQLItem.setString(6,item.getEmail());
                         comandoSQLItem.setInt(7,item.getNumEndereco(tblCliente.getValueAt(i, 5).toString()));
                         comandoSQLItem.setBoolean(8,item.getSexo(tblCliente.getValueAt(i, 6).toString()));

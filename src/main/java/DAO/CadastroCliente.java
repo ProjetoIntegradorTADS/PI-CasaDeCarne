@@ -9,6 +9,7 @@ import br.sp.senac.d160.TelasCasaDeCarnes.CRUD_Cliente;
 import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,8 +49,8 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtNumero = new javax.swing.JTextField();
         lblEndereco2 = new javax.swing.JLabel();
         fmtCEP = new javax.swing.JFormattedTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        btnMasc = new javax.swing.JRadioButton();
+        btnFem = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtComplemento = new javax.swing.JTextField();
@@ -202,19 +203,19 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Masculino");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(btnMasc);
+        btnMasc.setText("Masculino");
+        btnMasc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                btnMascActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Feminino");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(btnFem);
+        btnFem.setText("Feminino");
+        btnFem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                btnFemActionPerformed(evt);
             }
         });
 
@@ -293,9 +294,9 @@ public class CadastroCliente extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(lblEnderecoInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jRadioButton1)
+                                        .addComponent(btnMasc)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButton2)))
+                                        .addComponent(btnFem)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblSexoInfo))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -334,8 +335,8 @@ public class CadastroCliente extends javax.swing.JFrame {
                     .addComponent(lblCPFInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1)
+                    .addComponent(btnFem)
+                    .addComponent(btnMasc)
                     .addComponent(jLabel1)
                     .addComponent(lblSexoInfo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -399,13 +400,13 @@ public class CadastroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblNomeInfoMousePressed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void btnFemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_btnFemActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void btnMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMascActionPerformed
 
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_btnMascActionPerformed
 
     private void fmtCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fmtCEPActionPerformed
         /**
@@ -575,19 +576,19 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-            ArrayList<Cliente> listaItens = new ArrayList<Cliente>();
+            ArrayList<Cliente>listaItens = new ArrayList<Cliente>();
             
         if(tblCliente.getRowCount()>0){
                 for(int i=0;i<tblCliente.getRowCount();i++){
                    Cliente item = new Cliente();
 
-                    item.setIdCliente(Integer.parseInt(tblCliente.getValueAt(i, 0).toString()));
-                    item.setNome(tblCliente.getValueAt(i, 1).toString());
-                    item.setEndereco(tblCliente.getValueAt(i, 2).toString());
-                    item.getCPF(tblCliente.getValueAt(i, 3).toString());
-                    item.getCEP(tblCliente.getValueAt(i, 4).toString());
-                    item.getNumEndereco(tblCliente.getValueAt(i, 5).toString());
-                    item.getSexo(tblCliente.getValueAt(i, 6).toString());
+                   
+                    item.setNome(tblCliente.getValueAt(i, 0).toString());
+                    item.setEndereco(tblCliente.getValueAt(i, 1).toString());
+                    item.getCpf(tblCliente.getValueAt(i, 2).toString());
+                    item.getCep(tblCliente.getValueAt(i, 3).toString());
+                    item.getNumEndereco(tblCliente.getValueAt(i, 4).toString());
+                    item.getSexo(tblCliente.getValueAt(i, 5).toString());
                     item.getComplemento(tblCliente.getValueAt(i, 6).toString());
                    
                     
@@ -597,6 +598,33 @@ public class CadastroCliente extends javax.swing.JFrame {
 
                 }
         }
+        String nome = (txtNome.getText());
+        String endereco = (txtEndereco.getText());
+        String email = (txtEmail.getText());
+        String cpf = (fmtCPF.getText());
+        String cep = (fmtCEP.getText());
+        String numEndereco = (txtNumero.getText());
+        String complemente = (txtComplemento.getText());
+        
+        
+        
+        Cliente objCliente = new Cliente();
+        objCliente.setNome(nome);
+        objCliente.setEndereco(endereco);
+        objCliente.setCpf(cpf);
+        objCliente.setCep(cep);
+        objCliente.setEmail(email);
+        objCliente.setNumEndereco(numEndereco);
+        objCliente.setComplemento(complemente);
+        objCliente.setListaItens(listaItens);
+
+        boolean retorno = ClienteDAO.cadastrar(objCliente);
+        if (retorno){
+            JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
+        } else{
+            JOptionPane.showMessageDialog(this, "Falha na gravação!");
+        }
+
     }//GEN-LAST:event_btnCadastroActionPerformed
 
     /**
@@ -637,6 +665,8 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastro;
+    private javax.swing.JRadioButton btnFem;
+    private javax.swing.JRadioButton btnMasc;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.JFormattedTextField fmtCEP;
@@ -645,8 +675,6 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JLabel lblCEPInfo;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblCPFInfo;
