@@ -36,8 +36,8 @@ public class ClienteDAO {
             comandoSQL.setString(3, obj.getcPF());
             comandoSQL.setString(4, obj.getcEP());
             comandoSQL.setString(5, obj.getEmail());
-            comandoSQL.setInt(6, obj.getNumEndereco());
-            comandoSQL.setBoolean(7, obj.getSexo());
+            comandoSQL.setInt(6, obj.getNumEndereco(tblCliente.getValueAt(i, 5).toString()));
+            comandoSQL.setBoolean(7, obj.getSexo(tblCliente.getValueAt(i, 6).toString()));
              
             int linhasAfetadas = comandoSQL.executeUpdate();
             if (linhasAfetadas > 0) {
@@ -52,8 +52,8 @@ public class ClienteDAO {
                         comandoSQLItem.setString(4, item.getcPF());
                         comandoSQLItem.setString(5,item.getcEP());
                         comandoSQLItem.setString(6,item.getEmail());
-                        comandoSQLItem.setInt(7,item.getNumEndereco());
-                        comandoSQLItem.setBoolean(8,item.getSexo());
+                        comandoSQLItem.setInt(7,item.getNumEndereco(tblCliente.getValueAt(i, 5).toString()));
+                        comandoSQLItem.setBoolean(8,item.getSexo(tblCliente.getValueAt(i, 6).toString()));
                         
 
                         int linhasAfetadasItem = comandoSQLItem.executeUpdate();

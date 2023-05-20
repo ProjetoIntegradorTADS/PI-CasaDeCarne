@@ -31,11 +31,11 @@ public class Cliente {
             
         }
         
-        public Cliente(String nome, String endereco, String cPF, String cEP, int numEndereco, Boolean sexo, String complemento){
+        public Cliente(String nome, String endereco, String CPF, String CEP, int numEndereco, Boolean sexo, String complemento){
          this.nome = nome;
          this.endereco = endereco;
-         this.cPF = cPF;
-         this.cEP = cEP;
+         this.cPF = CPF;
+         this.cEP = CEP;
          this.numEndereco = numEndereco;
          this.sexo = sexo;
          this.complemento = complemento;
@@ -63,19 +63,19 @@ public class Cliente {
             this.endereco = endereco;
         }
 
-        public String getcPF() {
+        public String getCPF(String toString) {
             return cPF;
         }
 
-        public void setcPF(String CPF) {
+        public void setCPF(String CPF) {
             this.cPF = CPF;
         }
 
-        public String getcEP() {
+        public String getCEP(String toString) {
             return cEP;
         }
 
-        public void setcEP(String CEP) {
+        public void setCEP(String CEP) {
             this.cEP = CEP;
         }
 
@@ -87,7 +87,7 @@ public class Cliente {
             this.email = Email;
         }
 
-        public int getNumEndereco() {
+        public int getNumEndereco(String toString) {
             return numEndereco;
         }
 
@@ -95,7 +95,7 @@ public class Cliente {
             this.numEndereco = numEndereco;
         }
 
-        public boolean getSexo() {
+        public boolean getSexo(String toString) {
             return sexo;
         }
 
@@ -103,14 +103,14 @@ public class Cliente {
             this.sexo = sexo;
         }
 
-        public String getComplemento() {
+        public String getComplemento(String toString) {
             return complemento;
         }
 
         public void setComplemento(String complemento) {
             this.complemento = complemento;
         }
-  
+                    
         
         
 }

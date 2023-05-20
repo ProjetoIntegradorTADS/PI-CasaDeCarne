@@ -581,10 +581,16 @@ public class CadastroCliente extends javax.swing.JFrame {
                 for(int i=0;i<tblCliente.getRowCount();i++){
                    Cliente item = new Cliente();
 
-                    item.setIdProduto(Integer.parseInt(tblCliente.getValueAt(i, 0).toString()));
-                    item.setDscProduto(tblCliente.getValueAt(i, 1).toString());
-                    item.setQtdProduto(Integer.parseInt(tblCliente.getValueAt(i, 2).toString()));
-                    item.setVlrProduto(Double.parseDouble(tbmCliente.getValueAt(i, 3).toString()));
+                    item.setIdCliente(Integer.parseInt(tblCliente.getValueAt(i, 0).toString()));
+                    item.setNome(tblCliente.getValueAt(i, 1).toString());
+                    item.setEndereco(tblCliente.getValueAt(i, 2).toString());
+                    item.getCPF(tblCliente.getValueAt(i, 3).toString());
+                    item.getCEP(tblCliente.getValueAt(i, 4).toString());
+                    item.getNumEndereco(tblCliente.getValueAt(i, 5).toString());
+                    item.getSexo(tblCliente.getValueAt(i, 6).toString());
+                    item.getComplemento(tblCliente.getValueAt(i, 6).toString());
+                   
+                    
 
                     //Adiciono o objeto à listaItens
                     listaItens.add(item);
