@@ -18,51 +18,33 @@ import java.sql.Statement;
  */ 
 public class ClienteDAO {
     
-    static String URL = "jdbc:mysql://localhost:3306/CasaDeCarne";
+    static String URL = "jdbc:mysql://localhost:3306/?user=root";
     static String Login = "root";
     static String Senha = "A@1090073061a";
     
         public static boolean cadastrar(Cliente obj) {
         boolean retorno = false;
         
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
+            
             Connection conexao = DriverManager.getConnection(URL, Login, Senha);
             
-            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO Cliente (Nome,Endereco,Cpf,Cep,Email,Numero,Sexo) VALUES (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO Cliente (idCliente, Nome,Endereco,Cpf,Cep,Email,Numero,Sexo) VALUES (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            
+            
             comandoSQL.setInt(0, obj.getIdCliente());
             comandoSQL.setString(1, obj.getNome());
-            comandoSQL.setString(2, obj.getEndereco());
-            comandoSQL.setString(3, obj.getCpf());
-            comandoSQL.setString(4, obj.getCep());
-            comandoSQL.setString(5, obj.getEmail());
-            comandoSQL.setInt(6, obj.getNumEndereco(tblCliente.getValueAt(i, 5).toString()));
-            comandoSQL.setBoolean(7, obj.getSexo(tblCliente.getValueAt(i, 6).toString()));
+            comandoSQL.setString(2, obj.getCpf());
+            comandoSQL.setString(3,obj.getCep());
+            comandoSQL.setString(4, obj.getEmail());
+            comandoSQL.setString(5, obj.getNumEndereco());
+            comandoSQL.setBoolean(6, obj.getSexo());
+            comandoSQL.setString(7, obj.getComplemento());
              
             int linhasAfetadas = comandoSQL.executeUpdate();
-            if (linhasAfetadas > 0) {
-                ResultSet rs = comandoSQL.getGeneratedKeys();
-                if (rs .next()) {
-                    int idCliente = rs.getInt(1);
-                    for (Cliente item : obj.getListaItens()) {
-                        PreparedStatement comandoSQLItem = conexao.prepareStatement("INSERT INTO ItemNota (Nome,Endereco,CPF,CEP,Email,Numero,Sexo) VALUES (?,?,?,?,?,?,?)");
-                        comandoSQLItem.setInt(1, item.getIdCliente());
-                        comandoSQLItem.setString(2, item.getNome());
-                        comandoSQLItem.setString(3, item.getEndereco());
-                        comandoSQLItem.setString(4, item.getCpf());
-                        comandoSQLItem.setString(5,item.getCep());
-                        comandoSQLItem.setString(6,item.getEmail());
-                        comandoSQLItem.setInt(7,item.getNumEndereco(tblCliente.getValueAt(i, 5).toString()));
-                        comandoSQLItem.setBoolean(8,item.getSexo(tblCliente.getValueAt(i, 6).toString()));
-                        
-
-                        int linhasAfetadasItem = comandoSQLItem.executeUpdate();
-                        if(linhasAfetadasItem>0){
-                            retorno = true;
-                        }
-                    }
-                }
-            }
+            
             
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());

@@ -7,10 +7,6 @@ import java.util.ArrayList;
  * 
  */
 public class Cliente {
-
-    public static boolean cadastrar(Cliente objCliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
         private String nome;
         private String endereco;
         private String cpf;
@@ -68,7 +64,7 @@ public class Cliente {
             this.endereco = endereco;
         }
 
-        public String getCpf(String cpf) {
+        public String getCpf() {
             return cpf;
         }
 
@@ -76,7 +72,7 @@ public class Cliente {
             this.cpf = cpf;
         }
 
-        public String getCep(String cep) {
+        public String getCep() {
             return cep;
         }
 
@@ -84,7 +80,7 @@ public class Cliente {
             this.cep = cep;
         }
 
-        public String getEmail(String email) {
+        public String getEmail() {
             return email;
         }
 
@@ -92,7 +88,7 @@ public class Cliente {
             this.email = email;
         }
 
-        public String getNumEndereco(String numero) {
+        public String getNumEndereco() {
             return numEndereco;
         }
 
@@ -100,7 +96,7 @@ public class Cliente {
             this.numEndereco = numEndereco;
         }
 
-        public boolean getSexo(String toString) {
+        public boolean getSexo() {
             return sexo;
         }
 
@@ -108,7 +104,7 @@ public class Cliente {
             this.sexo = sexo;
         }
 
-        public String getComplemento(String toString) {
+        public String getComplemento() {
             return complemento;
         }
 

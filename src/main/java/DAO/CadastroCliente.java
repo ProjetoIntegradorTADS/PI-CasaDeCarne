@@ -585,11 +585,11 @@ public class CadastroCliente extends javax.swing.JFrame {
                    
                     item.setNome(tblCliente.getValueAt(i, 0).toString());
                     item.setEndereco(tblCliente.getValueAt(i, 1).toString());
-                    item.getCpf(tblCliente.getValueAt(i, 2).toString());
-                    item.getCep(tblCliente.getValueAt(i, 3).toString());
-                    item.getNumEndereco(tblCliente.getValueAt(i, 4).toString());
-                    item.getSexo(tblCliente.getValueAt(i, 5).toString());
-                    item.getComplemento(tblCliente.getValueAt(i, 6).toString());
+                    item.setCpf(tblCliente.getValueAt(i, 2).toString());
+                    item.setCep(tblCliente.getValueAt(i, 3).toString());
+                    item.setNumEndereco(tblCliente.getValueAt(i, 4).toString());
+                    //item.setSexo(tblCliente.getValueAt(i, 5).toString());
+                    item.setComplemento(tblCliente.getValueAt(i, 6).toString());
                    
                     
 
