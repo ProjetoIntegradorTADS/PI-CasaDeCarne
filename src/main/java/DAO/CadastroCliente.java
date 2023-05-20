@@ -595,16 +595,17 @@ public class CadastroCliente extends javax.swing.JFrame {
 
                     //Adiciono o objeto à listaItens
                     listaItens.add(item);
-
+                   
                 }
+                
         }
-        String nome = (txtNome.getText());
-        String endereco = (txtEndereco.getText());
-        String email = (txtEmail.getText());
-        String cpf = (fmtCPF.getText());
-        String cep = (fmtCEP.getText());
-        String numEndereco = (txtNumero.getText());
-        String complemente = (txtComplemento.getText());
+         String nome = (txtNome.getText());
+                    String endereco = (txtEndereco.getText());
+                    String email = (txtEmail.getText());
+                    String cpf = (fmtCPF.getText());
+                    String cep = (fmtCEP.getText());
+                    String numEndereco = (txtNumero.getText());
+                    String complemente = (txtComplemento.getText());
         
         
         

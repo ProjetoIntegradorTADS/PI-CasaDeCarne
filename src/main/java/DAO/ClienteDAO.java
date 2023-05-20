@@ -18,7 +18,7 @@ import java.sql.Statement;
  */ 
 public class ClienteDAO {
     
-    static String URL = "jdbc:mysql://localhost:3306/?user=root";
+    static String URL = "jdbc:mysql://localhost:3306/CasaDeCarne";
     static String Login = "root";
     static String Senha = "A@1090073061a";
     
@@ -48,7 +48,7 @@ public class ClienteDAO {
             
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
-            System.out.println("bla");
+            System.out.println("ta tudo errado po");
         }
         
         return retorno;
