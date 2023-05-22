@@ -18,9 +18,9 @@ import java.sql.Statement;
  */ 
 public class ClienteDAO {
     
-    static String URL = "jdbc:mysql://localhost:3306/CasaDeCarne";
+    static String URL = "root@127.0.0.1:3306";
     static String Login = "root";
-    static String Senha = "A@1090073061a";
+    static String Senha = "P@$$word";
     
         public static boolean cadastrar(Cliente obj) {
         boolean retorno = false;

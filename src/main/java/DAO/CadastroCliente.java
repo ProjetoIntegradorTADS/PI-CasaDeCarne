@@ -1,11 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package DAO;
 
-import Classes.Cliente;
 import br.sp.senac.d160.TelasCasaDeCarnes.CRUD_Cliente;
+import Classes.Cliente;
 import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -60,7 +57,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         lblEmailInfo = new javax.swing.JLabel();
         lblCEPInfo = new javax.swing.JLabel();
         lblSexoInfo = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -243,10 +240,10 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         lblCEPInfo.setForeground(new java.awt.Color(255, 0, 51));
 
-        jButton2.setText("Excluir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -277,7 +274,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblCEPInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnCadastro)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(29, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -368,7 +365,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(btnExcluir))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -569,36 +566,16 @@ public class CadastroCliente extends javax.swing.JFrame {
      }
     }//GEN-LAST:event_fmtCEPFocusLost
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         CRUD_Cliente cliente = new CRUD_Cliente();
         cliente.setVisible(true);
         cliente.setDefaultCloseOperation(Estoque.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-            ArrayList<Cliente>listaItens = new ArrayList<Cliente>();
-            
-        if(tblCliente.getRowCount()>0){
-                for(int i=0;i<tblCliente.getRowCount();i++){
-                   Cliente item = new Cliente();
-
-                   
-                    item.setNome(tblCliente.getValueAt(i, 0).toString());
-                    item.setEndereco(tblCliente.getValueAt(i, 1).toString());
-                    item.setCpf(tblCliente.getValueAt(i, 2).toString());
-                    item.setCep(tblCliente.getValueAt(i, 3).toString());
-                    item.setNumEndereco(tblCliente.getValueAt(i, 4).toString());
-                    //item.setSexo(tblCliente.getValueAt(i, 5).toString());
-                    item.setComplemento(tblCliente.getValueAt(i, 6).toString());
-                   
-                    
-
-                    //Adiciono o objeto à listaItens
-                    listaItens.add(item);
-                   
-                }
-                
-        }
+         
+       
+         
          String nome = (txtNome.getText());
                     String endereco = (txtEndereco.getText());
                     String email = (txtEmail.getText());
@@ -617,7 +594,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         objCliente.setEmail(email);
         objCliente.setNumEndereco(numEndereco);
         objCliente.setComplemento(complemente);
-        objCliente.setListaItens(listaItens);
+        
 
         boolean retorno = ClienteDAO.cadastrar(objCliente);
         if (retorno){
@@ -666,13 +643,13 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastro;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JRadioButton btnFem;
     private javax.swing.JRadioButton btnMasc;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.JFormattedTextField fmtCEP;
     private javax.swing.JFormattedTextField fmtCPF;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

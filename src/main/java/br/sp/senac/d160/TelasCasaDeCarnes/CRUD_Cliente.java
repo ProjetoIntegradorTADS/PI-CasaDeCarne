@@ -4,7 +4,12 @@
  */
 package br.sp.senac.d160.TelasCasaDeCarnes;
 
+import Classes.Cliente;
 import DAO.CadastroCliente;
+import DAO.CadastroCliente;
+import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
+import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
+import java.util.ArrayList;
 
 /**
  *
@@ -170,7 +175,27 @@ public class CRUD_Cliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+     ArrayList<Cliente>listaItens = new ArrayList<Cliente>();
+        
+        if(tblCliente.getRowCount()>0){
+                for(int i=0;i<tblCliente.getRowCount();i++){
+                   Cliente item = new Cliente();
+
+                   
+                    item.setNome(tblCliente.getValueAt(i, 0).toString());
+                    item.setEndereco(tblCliente.getValueAt(i, 1).toString());
+                    item.setCpf(tblCliente.getValueAt(i, 2).toString());
+                    item.setCep(tblCliente.getValueAt(i, 3).toString());
+                    item.setNumEndereco(tblCliente.getValueAt(i, 4).toString());
+                    //item.setSexo(tblCliente.getValueAt(i, 5).toString());
+                    item.setComplemento(tblCliente.getValueAt(i, 6).toString());
+                   
+                    
+
+                    //Adiciono o objeto à listaItens
+                    listaItens.add(item);
+                }
+     }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
