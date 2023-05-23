@@ -1,4 +1,3 @@
-
 package DAO;
 
 import br.sp.senac.d160.TelasCasaDeCarnes.CRUD_Cliente;
@@ -7,7 +6,6 @@ import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -410,7 +408,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         /**
          * Mais uma alteracao para teste
          */
-        
+
         if (fmtCEP.getText().length() > 0) {
             lblCEPInfo.setVisible(false);
         } else {
@@ -422,10 +420,10 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void txtNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroKeyTyped
         /**
          * Validacao das teclas que sao permitidas no campo txtNumero
-         * 
-         * 
+         *
+         *
          */
-        
+
         char c = evt.getKeyChar();
         if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
@@ -449,33 +447,33 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_lblInfoKeyTyped
 
     private void fmtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fmtCPFActionPerformed
-   
+
     }//GEN-LAST:event_fmtCPFActionPerformed
 
     private void fmtCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fmtCPFFocusLost
-    /**
-     * Validacao do campo CPF como Obrigatorio
-     */
-        
-        if(fmtCPF.getValue() == null || fmtCPF.getValue().toString().trim().isEmpty()) {
-        this.lblCPFInfo.setText("* Campo Obrigatório");
-        lblCPFInfo.setVisible(true);
-     }else{
-     lblCPFInfo.setVisible(false);
-     }
+        /**
+         * Validacao do campo CPF como Obrigatorio
+         */
+
+        if (fmtCPF.getValue() == null || fmtCPF.getValue().toString().trim().isEmpty()) {
+            this.lblCPFInfo.setText("* Campo Obrigatório");
+            lblCPFInfo.setVisible(true);
+        } else {
+            lblCPFInfo.setVisible(false);
+        }
     }//GEN-LAST:event_fmtCPFFocusLost
 
     private void fmtCPFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fmtCPFFocusGained
-     lblCPFInfo.setVisible(false); 
+        lblCPFInfo.setVisible(false);
     }//GEN-LAST:event_fmtCPFFocusGained
 
     private void txtEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoActionPerformed
-       
-        
+
+
     }//GEN-LAST:event_txtEnderecoActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-    
+
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
@@ -508,7 +506,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeFocusGained
 
     private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
-       this.lblEmailInfo.setText("* Campo Obrigatório");
+        this.lblEmailInfo.setText("* Campo Obrigatório");
         if (txtEmail.getText().length() > 0) {
             lblEmailInfo.setVisible(false);
 
@@ -518,12 +516,12 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailFocusLost
 
     private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
-    lblEmailInfo.setVisible(false);
+        lblEmailInfo.setVisible(false);
     }//GEN-LAST:event_txtEmailFocusGained
 
     private void txtEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnderecoFocusLost
-    this.lblEnderecoInfo.setText("* Campo Obrigatório");
-    if (txtEndereco.getText().length() > 0) {
+        this.lblEnderecoInfo.setText("* Campo Obrigatório");
+        if (txtEndereco.getText().length() > 0) {
             lblEnderecoInfo.setVisible(false);
 
         } else {
@@ -532,20 +530,20 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEnderecoFocusLost
 
     private void txtEnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnderecoFocusGained
-    lblEnderecoInfo.setVisible(false);
+        lblEnderecoInfo.setVisible(false);
     }//GEN-LAST:event_txtEnderecoFocusGained
 
     private void txtNumeroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroFocusGained
-       lblCEPInfo.setVisible(false);
+        lblCEPInfo.setVisible(false);
     }//GEN-LAST:event_txtNumeroFocusGained
 
     private void txtNumeroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroKeyReleased
-     
+
     }//GEN-LAST:event_txtNumeroKeyReleased
 
     private void txtNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroFocusLost
-       this.lblCEPInfo.setText("* Campo Obrigatório");
-    if (txtNumero.getText().length() > 0) {
+        this.lblCEPInfo.setText("* Campo Obrigatório");
+        if (txtNumero.getText().length() > 0) {
             lblCEPInfo.setVisible(false);
 
         } else {
@@ -554,17 +552,17 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNumeroFocusLost
 
     private void fmtCEPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fmtCEPFocusGained
-  
-     lblCEPInfo.setVisible(false);
+
+        lblCEPInfo.setVisible(false);
     }//GEN-LAST:event_fmtCEPFocusGained
 
     private void fmtCEPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fmtCEPFocusLost
-     if(fmtCEP.getValue() == null || fmtCEP.getValue().toString().trim().isEmpty()) {
-        this.lblCEPInfo.setText("* Campo Obrigatório");
-        lblCEPInfo.setVisible(true);
-     }else{
-     lblCEPInfo.setVisible(false);
-     }
+        if (fmtCEP.getValue() == null || fmtCEP.getValue().toString().trim().isEmpty()) {
+            this.lblCEPInfo.setText("* Campo Obrigatório");
+            lblCEPInfo.setVisible(true);
+        } else {
+            lblCEPInfo.setVisible(false);
+        }
     }//GEN-LAST:event_fmtCEPFocusLost
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -574,19 +572,15 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-         
-       
-         
-         String nome = (txtNome.getText());
-                    String endereco = (txtEndereco.getText());
-                    String email = (txtEmail.getText());
-                    String cpf = (fmtCPF.getText());
-                    String cep = (fmtCEP.getText());
-                    String numEndereco = (txtNumero.getText());
-                    String complemente = (txtComplemento.getText());
-        
-        
-        
+
+        String nome = (txtNome.getText());
+        String endereco = (txtEndereco.getText());
+        String email = (txtEmail.getText());
+        String cpf = (fmtCPF.getText());
+        String cep = (fmtCEP.getText());
+        String numEndereco = (txtNumero.getText());
+        String complemente = (txtComplemento.getText());
+
         Cliente objCliente = new Cliente();
         objCliente.setNome(nome);
         objCliente.setEndereco(endereco);
@@ -595,12 +589,11 @@ public class CadastroCliente extends javax.swing.JFrame {
         objCliente.setEmail(email);
         objCliente.setNumEndereco(numEndereco);
         objCliente.setComplemento(complemente);
-        
 
         boolean retorno = ClienteDAO.cadastrar(objCliente);
-        if (retorno){
+        if (retorno) {
             JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
-        } else{
+        } else {
             JOptionPane.showMessageDialog(this, "Falha na gravação!");
         }
 

@@ -18,9 +18,9 @@ import java.sql.Statement;
  */ 
 public class ClienteDAO {
     
-    static String URL = "root@127.0.0.1:3306";
+    static String URL = "jdbc:mysql://localhost:3306/casadecarne";
     static String Login = "root";
-    static String Senha = "P@$$word";
+    static String Senha = "";
     
         public static boolean cadastrar(Cliente obj) {
         boolean retorno = false;
@@ -31,16 +31,16 @@ public class ClienteDAO {
             
             Connection conexao = DriverManager.getConnection(URL, Login, Senha);
             
-            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO Cliente (idCliente, Nome,Endereco,Cpf,Cep,Email,Numero,Sexo) VALUES (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO cliente ( Nome,Endereco,Cpf,Cep,Email,Numero,complemento) VALUES (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             
             
-            comandoSQL.setInt(0, obj.getIdCliente());
+           // comandoSQL.setInt(0, obj.getIdCliente());
             comandoSQL.setString(1, obj.getNome());
-            comandoSQL.setString(2, obj.getCpf());
-            comandoSQL.setString(3,obj.getCep());
-            comandoSQL.setString(4, obj.getEmail());
-            comandoSQL.setString(5, obj.getNumEndereco());
-            comandoSQL.setBoolean(6, obj.getSexo());
+            comandoSQL.setString(2, obj.getEndereco());
+            comandoSQL.setString(3,obj.getCpf());
+            comandoSQL.setString(4, obj.getCep());
+            comandoSQL.setString(5, obj.getEmail());
+            comandoSQL.setString(6, obj.getNumEndereco());
             comandoSQL.setString(7, obj.getComplemento());
              
             int linhasAfetadas = comandoSQL.executeUpdate();
