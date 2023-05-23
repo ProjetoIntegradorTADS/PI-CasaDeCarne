@@ -4,7 +4,10 @@
  */
 package br.sp.senac.d160.TelasCasaDeCarnes;
 
+import Classes.Produto;
+import DAO.ProdutoDAO;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,9 +34,9 @@ public class Estoque extends javax.swing.JFrame {
         AdicionarProduto = new javax.swing.JPanel();
         lblNomeAdcPrdt = new javax.swing.JLabel();
         lblQntAdcPrdt = new javax.swing.JLabel();
-        txtNomeCliAdcPrdt = new javax.swing.JTextField();
+        txtNomeAdcPrdt = new javax.swing.JTextField();
         txtQntAdcPrdt = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnAdcEstoque = new javax.swing.JButton();
         lblValorAdcPrdt = new javax.swing.JLabel();
         txtValorAdcPrdt = new javax.swing.JTextField();
         lblInfo = new javax.swing.JLabel();
@@ -51,14 +54,14 @@ public class Estoque extends javax.swing.JFrame {
 
         lblQntAdcPrdt.setText("Quantidade:");
 
-        txtNomeCliAdcPrdt.addActionListener(new java.awt.event.ActionListener() {
+        txtNomeAdcPrdt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeCliAdcPrdtActionPerformed(evt);
+                txtNomeAdcPrdtActionPerformed(evt);
             }
         });
-        txtNomeCliAdcPrdt.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtNomeAdcPrdt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNomeCliAdcPrdtKeyTyped(evt);
+                txtNomeAdcPrdtKeyTyped(evt);
             }
         });
 
@@ -68,7 +71,12 @@ public class Estoque extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Adicionar");
+        btnAdcEstoque.setText("Adicionar");
+        btnAdcEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdcEstoqueActionPerformed(evt);
+            }
+        });
 
         lblValorAdcPrdt.setText("Valor:");
 
@@ -98,9 +106,9 @@ public class Estoque extends javax.swing.JFrame {
                         .addGroup(AdicionarProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(AdicionarProdutoLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnAdcEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(AdicionarProdutoLayout.createSequentialGroup()
-                                .addComponent(txtNomeCliAdcPrdt, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                                .addComponent(txtNomeAdcPrdt, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblQntAdcPrdt)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -117,13 +125,13 @@ public class Estoque extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(AdicionarProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNomeAdcPrdt)
-                    .addComponent(txtNomeCliAdcPrdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomeAdcPrdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblQntAdcPrdt)
                     .addComponent(txtQntAdcPrdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblValorAdcPrdt)
                     .addComponent(txtValorAdcPrdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnAdcEstoque)
                 .addGap(12, 12, 12)
                 .addComponent(lblInfo)
                 .addContainerGap(7, Short.MAX_VALUE))
@@ -201,7 +209,7 @@ public class Estoque extends javax.swing.JFrame {
 
     private void txtQntAdcPrdtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQntAdcPrdtKeyTyped
            char c = evt.getKeyChar();
-        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+        if (((c < '0') ||  (c > '9'))&& (c != KeyEvent.VK_BACK_SPACE) ) {
             evt.consume();
             this.lblInfo.setText("Somente Numeros Neste Campo!");
         } else {
@@ -213,7 +221,7 @@ public class Estoque extends javax.swing.JFrame {
 
     private void txtValorAdcPrdtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorAdcPrdtKeyTyped
             char c = evt.getKeyChar();
-        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+        if (((c < '0')  || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) ) {
             evt.consume();
             this.lblInfo.setText("Somente Numeros Neste Campo!");
         } else {
@@ -222,7 +230,7 @@ public class Estoque extends javax.swing.JFrame {
     
     }//GEN-LAST:event_txtValorAdcPrdtKeyTyped
 
-    private void txtNomeCliAdcPrdtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeCliAdcPrdtKeyTyped
+    private void txtNomeAdcPrdtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeAdcPrdtKeyTyped
            char c = evt.getKeyChar();
         if ((((c < 'a') || (c > 'z')) && (c < 'A' || c> 'Z') && c >' ') && (c != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
@@ -232,11 +240,35 @@ public class Estoque extends javax.swing.JFrame {
         }
     
     
-    }//GEN-LAST:event_txtNomeCliAdcPrdtKeyTyped
+    }//GEN-LAST:event_txtNomeAdcPrdtKeyTyped
 
-    private void txtNomeCliAdcPrdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCliAdcPrdtActionPerformed
+    private void txtNomeAdcPrdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeAdcPrdtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeCliAdcPrdtActionPerformed
+    }//GEN-LAST:event_txtNomeAdcPrdtActionPerformed
+
+    private void btnAdcEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdcEstoqueActionPerformed
+    
+       
+        String nomeProduto = (txtNomeAdcPrdt.getText());
+        Float quantidade = Float.parseFloat(txtQntAdcPrdt.getText());
+        Float valorPorKg = Float.parseFloat(txtValorAdcPrdt.getText());
+      
+
+        Produto objProduto = new Produto();
+        objProduto.setNomeProduto(nomeProduto);
+        objProduto.setQuantidade(quantidade);
+        objProduto.setValorProduto(valorPorKg);
+        
+    
+
+        boolean retorno = ProdutoDAO.adicionarEstoque(objProduto);
+        
+        if (retorno) {
+            JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Falha na gravação!");
+        }
+    }//GEN-LAST:event_btnAdcEstoqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,8 +311,8 @@ public class Estoque extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AdicionarProduto;
     private javax.swing.JPanel ExcluirProduto;
+    private javax.swing.JButton btnAdcEstoque;
     private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -288,7 +320,7 @@ public class Estoque extends javax.swing.JFrame {
     private javax.swing.JLabel lblNomeAdcPrdt;
     private javax.swing.JLabel lblQntAdcPrdt;
     private javax.swing.JLabel lblValorAdcPrdt;
-    private javax.swing.JTextField txtNomeCliAdcPrdt;
+    private javax.swing.JTextField txtNomeAdcPrdt;
     private javax.swing.JTextField txtQntAdcPrdt;
     private javax.swing.JTextField txtValorAdcPrdt;
     // End of variables declaration//GEN-END:variables

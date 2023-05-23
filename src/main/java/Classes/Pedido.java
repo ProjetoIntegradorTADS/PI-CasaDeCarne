@@ -8,14 +8,14 @@ public class Pedido {
     private String numeroPedido;
         private int quantidade;
         private float valorTotal;
-        private float preçoKG;
+        private float precoKg;
 
-        public float getPreçoUnitario() {
-            return preçoKG;
+        public float getPrecoKg() {
+            return precoKg;
         }
 
-        public void setPreçoUnitario(float preçoUnitario) {
-            this.preçoKG = preçoUnitario;
+        public void setPrecoKg(float precoKg) {
+            this.precoKg = precoKg;
         }
 
         public String getNumeroPedido() {

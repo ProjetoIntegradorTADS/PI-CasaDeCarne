@@ -70,10 +70,10 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jButton1" min="-2" pref="214" max="-2" attributes="0"/>
+                                  <Component id="btnAdcEstoque" min="-2" pref="214" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="txtNomeCliAdcPrdt" pref="388" max="32767" attributes="0"/>
+                                  <Component id="txtNomeAdcPrdt" pref="388" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="lblQntAdcPrdt" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -96,14 +96,14 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblNomeAdcPrdt" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNomeCliAdcPrdt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNomeAdcPrdt" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblQntAdcPrdt" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtQntAdcPrdt" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblValorAdcPrdt" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtValorAdcPrdt" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAdcEstoque" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="lblInfo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="7" max="32767" attributes="0"/>
@@ -122,10 +122,10 @@
             <Property name="text" type="java.lang.String" value="Quantidade:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNomeCliAdcPrdt">
+        <Component class="javax.swing.JTextField" name="txtNomeAdcPrdt">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeCliAdcPrdtActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomeCliAdcPrdtKeyTyped"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeAdcPrdtActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomeAdcPrdtKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtQntAdcPrdt">
@@ -133,10 +133,13 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtQntAdcPrdtKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnAdcEstoque">
           <Properties>
             <Property name="text" type="java.lang.String" value="Adicionar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdcEstoqueActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblValorAdcPrdt">
           <Properties>
