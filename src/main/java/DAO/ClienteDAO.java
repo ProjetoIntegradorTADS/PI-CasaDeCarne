@@ -44,6 +44,9 @@ public class ClienteDAO {
             comandoSQL.setString(7, obj.getComplemento());
              
             int linhasAfetadas = comandoSQL.executeUpdate();
+            if (linhasAfetadas > 0){
+            retorno = true;
+        }
             
             
         } catch (ClassNotFoundException | SQLException e) {

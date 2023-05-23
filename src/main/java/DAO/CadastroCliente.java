@@ -591,6 +591,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         objCliente.setComplemento(complemente);
 
         boolean retorno = ClienteDAO.cadastrar(objCliente);
+        
         if (retorno) {
             JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
         } else {
