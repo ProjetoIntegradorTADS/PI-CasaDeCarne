@@ -208,26 +208,30 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_txtValorAdcPrdtActionPerformed
 
     private void txtQntAdcPrdtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQntAdcPrdtKeyTyped
-           char c = evt.getKeyChar();
+       /*    comentamos a validação por erro ao subir informações pro banco de dados
+        
+        char c = evt.getKeyChar();
         if (((c < '0') ||  (c > '9'))&& (c != KeyEvent.VK_BACK_SPACE) ) {
             evt.consume();
             this.lblInfo.setText("Somente Numeros Neste Campo!");
         } else {
             this.lblInfo.setText("");
         }
-    
+    */
      
     }//GEN-LAST:event_txtQntAdcPrdtKeyTyped
 
     private void txtValorAdcPrdtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorAdcPrdtKeyTyped
-            char c = evt.getKeyChar();
+     /* comentamos a validação por erro ao subir informações pro banco de dados
+        
+        char c = evt.getKeyChar();
         if (((c < '0')  || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) ) {
             evt.consume();
             this.lblInfo.setText("Somente Numeros Neste Campo!");
         } else {
             this.lblInfo.setText("");
         }
-    
+    */
     }//GEN-LAST:event_txtValorAdcPrdtKeyTyped
 
     private void txtNomeAdcPrdtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeAdcPrdtKeyTyped
@@ -250,8 +254,8 @@ public class Estoque extends javax.swing.JFrame {
     
        
         String nomeProduto = (txtNomeAdcPrdt.getText());
-        Float quantidade = Float.parseFloat(txtQntAdcPrdt.getText());
-        Float valorPorKg = Float.parseFloat(txtValorAdcPrdt.getText());
+        Float quantidade = Float.parseFloat(txtQntAdcPrdt.getText().toString());
+        Float valorPorKg = Float.parseFloat(txtValorAdcPrdt.getText().toString());
       
 
         Produto objProduto = new Produto();

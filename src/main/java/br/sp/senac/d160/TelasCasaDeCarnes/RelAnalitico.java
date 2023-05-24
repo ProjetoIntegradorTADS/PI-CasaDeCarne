@@ -37,7 +37,7 @@ public class RelAnalitico extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Relatório Analitico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Relatório Analitico"));
 
         txtNomeCli.setText("Nome do Cliente:");
 
@@ -52,6 +52,11 @@ public class RelAnalitico extends javax.swing.JFrame {
                 "Nome Cliente", "Nº Pedido", "Produto", "Quantidade", "Preço Unitário", "Total"
             }
         ));
+        tblRelAnali.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                tblRelAnaliComponentAdded(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblRelAnali);
 
         lblNPedido.setText("Nº Pedido");
@@ -126,6 +131,10 @@ public class RelAnalitico extends javax.swing.JFrame {
     private void txtNPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNPedidoActionPerformed
     
     }//GEN-LAST:event_txtNPedidoActionPerformed
+
+    private void tblRelAnaliComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tblRelAnaliComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblRelAnaliComponentAdded
 
     /**
      * @param args the command line arguments

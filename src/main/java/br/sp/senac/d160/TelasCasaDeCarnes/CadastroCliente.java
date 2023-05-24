@@ -1,7 +1,8 @@
-package DAO;
+package br.sp.senac.d160.TelasCasaDeCarnes;
 
 import br.sp.senac.d160.TelasCasaDeCarnes.CRUD_Cliente;
 import Classes.Cliente;
+import DAO.ClienteDAO;
 import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Cliente"));
         jPanel1.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentRemoved(java.awt.event.ContainerEvent evt) {
                 jPanel1ComponentRemoved(evt);
@@ -239,7 +240,7 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         lblCEPInfo.setForeground(new java.awt.Color(255, 0, 51));
 
-        btnExcluir.setText("Excluir");
+        btnExcluir.setText("Propiedades do Cliente");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -272,8 +273,9 @@ public class CadastroCliente extends javax.swing.JFrame {
                                 .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblCEPInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnCadastro)
-                            .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnExcluir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCadastro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addContainerGap(29, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -401,7 +403,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFemActionPerformed
 
     private void btnMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMascActionPerformed
-
+        
     }//GEN-LAST:event_btnMascActionPerformed
 
     private void fmtCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fmtCEPActionPerformed

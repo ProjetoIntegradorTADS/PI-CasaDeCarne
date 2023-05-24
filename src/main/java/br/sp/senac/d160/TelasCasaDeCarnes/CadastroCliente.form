@@ -83,8 +83,10 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="lblCEPInfo" min="-2" pref="169" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="btnCadastro" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnExcluir" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="btnExcluir" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnCadastro" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace pref="29" max="32767" attributes="0"/>
                       </Group>
@@ -389,7 +391,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnExcluir">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Excluir"/>
+            <Property name="text" type="java.lang.String" value="Propiedades do Cliente"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
