@@ -26,9 +26,9 @@ public class ClienteDAO {
     
     
     
-    static String URL = "jdbc:mysql://localhost:3306/CasaDeCarne";
+    static String URL = "jdbc:mysql://localhost:3306/casadecarne";
     static String Login = "root";
-    static String Senha = "A@1090073061a";
+    static String Senha = "P@$$w0rd";
     
         public static boolean cadastrar(Cliente obj) {
         boolean retorno = false;
@@ -72,7 +72,7 @@ public class ClienteDAO {
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/CasaDeCarne", "root", "A@1090073061a");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "P@$$w0rd");
             PreparedStatement comandoSQL =  conexao.prepareStatement("SELECT * FROM cliente");
             ResultSet rs = comandoSQL.executeQuery();
             
@@ -106,16 +106,19 @@ public class ClienteDAO {
     }
     public static ArrayList<Cliente> buscarPorCpf(){
         
+        CRUD_Cliente crud_cliente = new CRUD_Cliente();
+        
+        
         ArrayList<Cliente> listar = new ArrayList<>();
         Connection conexao = null;
         
         
         try {
            
-            
-            String sql = "SELECT * FROM cliente where cod_cli = 1";
+            String cpf = crud_cliente.getFmtCPF().getText();
+            String sql = "SELECT * FROM cliente where cpf = '"+cpf+"'";
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/CasaDeCarne", "root", "A@1090073061a");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "P@$$w0rd");
             PreparedStatement comandoSQL =  conexao.prepareStatement( sql );
             ResultSet rs = comandoSQL.executeQuery();
             

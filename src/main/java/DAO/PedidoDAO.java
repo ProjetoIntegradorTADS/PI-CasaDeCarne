@@ -36,7 +36,7 @@ public class PedidoDAO {
             PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO pedido (quantidade,vlrNota,precoKG) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
             
             
-            comandoSQL.setInt(0, obj.getQuantidade());
+            comandoSQL.setFloat(0, obj.getQuantidade());
             comandoSQL.setFloat(1, obj.getValorTotal());
             comandoSQL.setFloat(2, obj.getPrecoKg());
            

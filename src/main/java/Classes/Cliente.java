@@ -34,7 +34,7 @@ public class Cliente {
         public Cliente(String nome, String endereco, String cpf, String cep,String email, String numEndereco, Boolean sexo, String complemento){
          this.nome = nome;
          this.endereco = endereco;
-         this.cep = cpf;
+         this.cpf = cpf;
          this.cep = cep;
          this.email = email;
          this.numEndereco = numEndereco;

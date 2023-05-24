@@ -11,6 +11,7 @@ import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
 import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import javax.swing.JFormattedTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,6 +27,16 @@ public class CRUD_Cliente extends javax.swing.JFrame {
     public CRUD_Cliente() {
         
         initComponents();
+    }
+
+    public JFormattedTextField getFmtCPF() {
+        
+        
+        return fmtCPF;
+    }
+
+    public void setFmtCPF(JFormattedTextField fmtCPF) {
+        this.fmtCPF = fmtCPF;
     }
    
     /**
@@ -275,7 +286,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBusca1ActionPerformed
 
     private void fmtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fmtCPFActionPerformed
-       
+    String cpf = fmtCPF.getText();
     }//GEN-LAST:event_fmtCPFActionPerformed
 
     /**
