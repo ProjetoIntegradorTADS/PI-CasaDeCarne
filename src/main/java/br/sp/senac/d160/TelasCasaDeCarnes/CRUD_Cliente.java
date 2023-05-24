@@ -6,10 +6,12 @@ package br.sp.senac.d160.TelasCasaDeCarnes;
 
 
 import Classes.Cliente;
+import DAO.ClienteDAO;
 import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
 import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,13 +19,15 @@ import java.util.ArrayList;
  */
 public class CRUD_Cliente extends javax.swing.JFrame {
 
+        
     /**
      * Creates new form CRUD_Cliente
      */
     public CRUD_Cliente() {
+        
         initComponents();
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,6 +42,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
         tblCliente = new javax.swing.JTable();
         btnAlterar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnMostrar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -45,6 +50,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         btnBusca = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        btnBusca1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,7 +61,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id Cliente", "Nome", "Endereço", "CPF", "CEP", "Email", "Numero ", "Sexo", "Complemento"
+                "Id Cliente", "Nome", "CPF", "CEP", "Email", "Endereço", "Numero ", "Sexo", "Complemento"
             }
         ));
         tblCliente.setColumnSelectionAllowed(true);
@@ -73,29 +79,41 @@ public class CRUD_Cliente extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("sansserif", 3, 18)); // NOI18N
         jButton2.setText("Excluir");
 
+        btnMostrar.setText("Mostrar  Todos Registros");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)))
+                    .addComponent(btnMostrar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMostrar)
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa de Cliente"));
@@ -111,9 +129,14 @@ public class CRUD_Cliente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        fmtCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fmtCPFActionPerformed(evt);
+            }
+        });
 
-        btnBusca.setFont(new java.awt.Font("sansserif", 3, 18)); // NOI18N
-        btnBusca.setText("Buscar");
+        btnBusca.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
+        btnBusca.setText("Buscar por Nome");
         btnBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscaActionPerformed(evt);
@@ -121,6 +144,14 @@ public class CRUD_Cliente extends javax.swing.JFrame {
         });
 
         jLabel3.setText("Ou");
+
+        btnBusca1.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
+        btnBusca1.setText("Buscar por CPF");
+        btnBusca1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBusca1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -137,24 +168,26 @@ public class CRUD_Cliente extends javax.swing.JFrame {
                     .addComponent(fmtCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                     .addComponent(txtNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBusca1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(btnBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(fmtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(fmtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBusca1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 13, Short.MAX_VALUE))
         );
 
@@ -174,7 +207,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -182,33 +215,6 @@ public class CRUD_Cliente extends javax.swing.JFrame {
 
     private void btnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActionPerformed
     
-  
-        
-        ArrayList<Cliente>listaItens = new ArrayList<Cliente>();
-        
-        if(tblCliente.getRowCount()>0){
-                for(int i=0;i<tblCliente.getRowCount();i++){
-                   Cliente item = new Cliente();
-
-                   
-                    item.setNome(tblCliente.getValueAt(i, 0).toString());
-                    item.setEndereco(tblCliente.getValueAt(i, 1).toString());
-                    item.setCpf(tblCliente.getValueAt(i, 2).toString());
-                    item.setCep(tblCliente.getValueAt(i, 3).toString());
-                    item.setNumEndereco(tblCliente.getValueAt(i, 4).toString());
-                    //item.setSexo(tblCliente.getValueAt(i, 5).toString());
-                    item.setComplemento(tblCliente.getValueAt(i, 6).toString());
-                   
-                    
-
-                    //Adiciono o objeto à listaItens
-                    listaItens.add(item);
-                }
-              
-        
-        }
-                
-     
     }//GEN-LAST:event_btnBuscaActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -216,6 +222,61 @@ public class CRUD_Cliente extends javax.swing.JFrame {
         cadastro.setVisible(true);
         cadastro.setDefaultCloseOperation(Estoque.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+    
+        ArrayList<Cliente> lista =  ClienteDAO.mostrarRegistros();
+        
+        DefaultTableModel modelo = (DefaultTableModel) tblCliente.getModel();
+        modelo.setRowCount(0);
+      
+        for (Cliente item : lista) {
+            
+            modelo.addRow(new String[]{ 
+                                        String.valueOf(item.getIdCliente()),
+                                        String.valueOf(item.getNome()),
+                                        String.valueOf(item.getCpf()),
+                                        String.valueOf(item.getCep()),
+                                        String.valueOf(item.getEmail()),
+                                        String.valueOf(item.getEndereco()),
+                                        String.valueOf(item.getNumEndereco()),
+                                        String.valueOf(item.getComplemento())
+                                    }  );
+                        
+        }
+                
+     
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void btnBusca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusca1ActionPerformed
+        
+        
+        ArrayList<Cliente> listar =  ClienteDAO.buscarPorCpf();
+        
+        DefaultTableModel modelo = (DefaultTableModel) tblCliente.getModel();
+        modelo.setRowCount(0);
+        
+        
+        
+        for (Cliente item : listar) {
+            
+            modelo.addRow(new String[]{ 
+                                        String.valueOf(item.getIdCliente()),
+                                        String.valueOf(item.getNome()),
+                                        String.valueOf(item.getCpf()),
+                                        String.valueOf(item.getCep()),
+                                        String.valueOf(item.getEmail()),
+                                        String.valueOf(item.getEndereco()),
+                                        String.valueOf(item.getNumEndereco()),
+                                        String.valueOf(item.getComplemento())
+                                    }  );
+                        
+        }
+    }//GEN-LAST:event_btnBusca1ActionPerformed
+
+    private void fmtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fmtCPFActionPerformed
+       
+    }//GEN-LAST:event_fmtCPFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,6 +316,8 @@ public class CRUD_Cliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnBusca;
+    private javax.swing.JButton btnBusca1;
+    private javax.swing.JButton btnMostrar;
     private javax.swing.JFormattedTextField fmtCPF;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
