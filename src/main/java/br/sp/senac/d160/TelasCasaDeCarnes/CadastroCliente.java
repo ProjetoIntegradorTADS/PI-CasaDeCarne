@@ -21,16 +21,12 @@ public class CadastroCliente extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-
-    /**
-     * Alterando a descrição para teste do git
-     */
+    boolean sexo;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup6 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         lblNome = new javax.swing.JLabel();
         lblCPF = new javax.swing.JLabel();
@@ -61,7 +57,6 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Cliente"));
         jPanel1.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentRemoved(java.awt.event.ContainerEvent evt) {
                 jPanel1ComponentRemoved(evt);
@@ -276,7 +271,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(btnExcluir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnCadastro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap(29, Short.MAX_VALUE))
+                        .addContainerGap(34, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(lblEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -367,7 +362,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluir))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -387,23 +382,23 @@ public class CadastroCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel1ComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jPanel1ComponentRemoved
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jPanel1ComponentRemoved
 
     private void lblNomeInfoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblNomeInfoKeyPressed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_lblNomeInfoKeyPressed
 
     private void lblNomeInfoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNomeInfoMousePressed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_lblNomeInfoMousePressed
 
     private void btnFemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemActionPerformed
-        // TODO add your handling code here:
+        //txtEmail.setText( btnFem.getText());
     }//GEN-LAST:event_btnFemActionPerformed
 
     private void btnMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMascActionPerformed
-        
+        //txtEmail.setText( btnMasc.getText());
     }//GEN-LAST:event_btnMascActionPerformed
 
     private void fmtCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fmtCEPActionPerformed
@@ -574,13 +569,21 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-
+        String sexo = null;
+        
+        
         String nome = (txtNome.getText());
         String endereco = (txtEndereco.getText());
         String email = (txtEmail.getText());
         String cpf = (fmtCPF.getText());
         String cep = (fmtCEP.getText());
         String numEndereco = (txtNumero.getText());
+        if(btnMasc.isSelected()) {
+            sexo = "Masculino";
+        } else if (btnFem.isSelected()) {
+            sexo = "Feminino";
+        }
+        
         String complemente = (txtComplemento.getText());
 
         Cliente objCliente = new Cliente();
@@ -590,10 +593,11 @@ public class CadastroCliente extends javax.swing.JFrame {
         objCliente.setCep(cep);
         objCliente.setEmail(email);
         objCliente.setNumEndereco(numEndereco);
+        objCliente.setSexo(sexo);
         objCliente.setComplemento(complemente);
 
         boolean retorno = ClienteDAO.cadastrar(objCliente);
-        
+
         if (retorno) {
             JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
         } else {
@@ -637,6 +641,9 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastro;
@@ -644,7 +651,6 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JRadioButton btnFem;
     private javax.swing.JRadioButton btnMasc;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.JFormattedTextField fmtCEP;
     private javax.swing.JFormattedTextField fmtCPF;
     private javax.swing.JLabel jLabel1;

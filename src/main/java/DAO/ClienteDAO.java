@@ -15,142 +15,128 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
 
 /**
  *
  * @author SALOMAO.FLIMA
- */ 
+ */
 public class ClienteDAO {
-    
-    
-    
-    
-    
+
     static String URL = "jdbc:mysql://localhost:3306/casadecarne";
     static String Login = "root";
     static String Senha = "P@$$w0rd";
-    
-        public static boolean cadastrar(Cliente obj) {
+
+    public static boolean cadastrar(Cliente obj) {
         boolean retorno = false;
-        
-        
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            
+
             Connection conexao = DriverManager.getConnection(URL, Login, Senha);
-            
-            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO cliente ( Nome,Endereco,Cpf,Cep,Email,Numero,complemento) VALUES (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            
-            
-          
+
+            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO cliente ( Nome,Endereco,Cpf,Cep,Email,Numero,sexo,complemento) VALUES (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+
             comandoSQL.setString(1, obj.getNome());
             comandoSQL.setString(2, obj.getEndereco());
-            comandoSQL.setString(3,obj.getCpf());
+            comandoSQL.setString(3, obj.getCpf());
             comandoSQL.setString(4, obj.getCep());
             comandoSQL.setString(5, obj.getEmail());
             comandoSQL.setString(6, obj.getNumEndereco());
-            comandoSQL.setString(7, obj.getComplemento());
-             
+            comandoSQL.setString(7, obj.getSexo());
+            comandoSQL.setString(8, obj.getComplemento());
+
             int linhasAfetadas = comandoSQL.executeUpdate();
-            if (linhasAfetadas > 0){
-            retorno = true;
-        }
-            
-            
+            if (linhasAfetadas > 0) {
+                retorno = true;
+            }
+
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("ta tudo errado po");
         }
-        
+
         return retorno;
-            
-    }
-     public static ArrayList<Cliente> mostrarRegistros(){
-        
-        ArrayList<Cliente> lista = new ArrayList<>();
-        Connection conexao = null;
-        
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "P@$$w0rd");
-            PreparedStatement comandoSQL =  conexao.prepareStatement("SELECT * FROM cliente");
-            ResultSet rs = comandoSQL.executeQuery();
-            
-            if(rs!=null){
-                while(rs.next()){
-                    Cliente objCliente = new Cliente();
-                    objCliente.setIdCliente(rs.getInt("cod_cli"));
-                    objCliente.setNome(rs.getString("nome"));
-                    objCliente.setCpf(rs.getString("cpf"));
-                    objCliente.setCep(rs.getString("cep"));
-                    objCliente.setEmail(rs.getString("email"));
-                    objCliente.setEndereco(rs.getString("endereco"));
-                    objCliente.setNumEndereco(rs.getString("numero"));
-                    objCliente.setComplemento(rs.getString("complemento"));
-                    
-                    
-                    lista.add(objCliente);
-                    
-                }
-            }
-            
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        return lista;
-    }
-    public static ArrayList<Cliente> buscarPorCpf(){
-        
-        CRUD_Cliente crud_cliente = new CRUD_Cliente();
-        
-        
-        ArrayList<Cliente> listar = new ArrayList<>();
-        Connection conexao = null;
-        
-        
-        try {
-           
-            String cpf = crud_cliente.getFmtCPF().getText();
-            String sql = "SELECT * FROM cliente where cpf = '"+cpf+"'";
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "P@$$w0rd");
-            PreparedStatement comandoSQL =  conexao.prepareStatement( sql );
-            ResultSet rs = comandoSQL.executeQuery();
-            
-            if(rs!=null){
-                while(rs.next()){
-                    Cliente objCliente = new Cliente();
-                    objCliente.setIdCliente(rs.getInt("cod_cli"));
-                    objCliente.setNome(rs.getString("nome"));
-                    objCliente.setEndereco(rs.getString("endereco"));
-                    objCliente.setCpf(rs.getString("cpf"));
-                    objCliente.setCep(rs.getString("cep"));
-                    objCliente.setEmail(rs.getString("email"));
-                    objCliente.setNumEndereco(rs.getString("numero"));
-                    objCliente.setSexo(true);
-                    objCliente.setComplemento(rs.getString("complemento"));
-                    
-                    
-                    listar.add(objCliente);
-                    
-                }
-            }
-            
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        return listar;
+
     }
 
+    public static ArrayList<Cliente> mostrarRegistros() {
+
+        ArrayList<Cliente> lista = new ArrayList<>();
+        Connection conexao = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "P@$$w0rd");
+            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM cliente");
+            ResultSet rs = comandoSQL.executeQuery();
+
+            if (rs != null) {
+                while (rs.next()) {
+                    Cliente objCliente = new Cliente();
+                    objCliente.setIdCliente(rs.getInt("cod_cli"));
+                    objCliente.setNome(rs.getString("nome"));
+                    objCliente.setCpf(rs.getString("cpf"));
+                    objCliente.setCep(rs.getString("cep"));
+                    objCliente.setEmail(rs.getString("email"));
+                    objCliente.setEndereco(rs.getString("endereco"));
+                    objCliente.setNumEndereco(rs.getString("numero"));
+                    objCliente.setComplemento(rs.getString("complemento"));
+
+                    lista.add(objCliente);
+
+                }
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return lista;
+    }
+
+    public static ArrayList<Cliente> buscarPorCpf(String cpfInfo) {
+
+        // CRUD_Cliente crud_cliente = new CRUD_Cliente();
+        ArrayList<Cliente> listar = new ArrayList<>();
+        Connection conexao = null;
+
+        try {
+
+            // String cpf = cpfInfo;
+            String sql = "SELECT * FROM cliente where cpf = '" + cpfInfo + "'";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "P@$$w0rd");
+            PreparedStatement comandoSQL = conexao.prepareStatement(sql);
+            ResultSet rs = comandoSQL.executeQuery();
+
+            if (rs != null) {
+                while (rs.next()) {
+                    Cliente objCliente = new Cliente();
+                    objCliente.setIdCliente(rs.getInt("cod_cli"));
+                    objCliente.setNome(rs.getString("nome"));
+                    objCliente.setEndereco(rs.getString("endereco"));
+                    objCliente.setCpf(rs.getString("cpf"));
+                    objCliente.setCep(rs.getString("cep"));
+                    objCliente.setEmail(rs.getString("email"));
+                    objCliente.setNumEndereco(rs.getString("numero"));
+                    objCliente.setSexo(rs.getString("sexo"));
+                    objCliente.setComplemento(rs.getString("complemento"));
+
+                    listar.add(objCliente);
+
+                }
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return listar;
+    }
 
 }

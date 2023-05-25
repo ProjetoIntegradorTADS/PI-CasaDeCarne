@@ -4,11 +4,8 @@
  */
 package br.sp.senac.d160.TelasCasaDeCarnes;
 
-
 import Classes.Cliente;
 import DAO.ClienteDAO;
-import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
-import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import javax.swing.JFormattedTextField;
@@ -20,25 +17,22 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CRUD_Cliente extends javax.swing.JFrame {
 
-        
     /**
      * Creates new form CRUD_Cliente
      */
     public CRUD_Cliente() {
-        
+
         initComponents();
     }
 
     public JFormattedTextField getFmtCPF() {
-        
-        
         return fmtCPF;
     }
 
     public void setFmtCPF(JFormattedTextField fmtCPF) {
         this.fmtCPF = fmtCPF;
     }
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,8 +58,6 @@ public class CRUD_Cliente extends javax.swing.JFrame {
         btnBusca1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações do Cliente"));
 
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -127,8 +119,6 @@ public class CRUD_Cliente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa de Cliente"));
-
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel1.setText("CPF:");
 
@@ -140,6 +130,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        fmtCPF.setName(""); // NOI18N
         fmtCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fmtCPFActionPerformed(evt);
@@ -180,7 +171,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
                     .addComponent(txtNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBusca1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(btnBusca1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                     .addComponent(btnBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -218,14 +209,14 @@ public class CRUD_Cliente extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActionPerformed
-    
+
     }//GEN-LAST:event_btnBuscaActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -235,58 +226,55 @@ public class CRUD_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-    
-        ArrayList<Cliente> lista =  ClienteDAO.mostrarRegistros();
-        
+
+        ArrayList<Cliente> lista = ClienteDAO.mostrarRegistros();
+
         DefaultTableModel modelo = (DefaultTableModel) tblCliente.getModel();
         modelo.setRowCount(0);
-      
+
         for (Cliente item : lista) {
-            
-            modelo.addRow(new String[]{ 
-                                        String.valueOf(item.getIdCliente()),
-                                        String.valueOf(item.getNome()),
-                                        String.valueOf(item.getCpf()),
-                                        String.valueOf(item.getCep()),
-                                        String.valueOf(item.getEmail()),
-                                        String.valueOf(item.getEndereco()),
-                                        String.valueOf(item.getNumEndereco()),
-                                        String.valueOf(item.getComplemento())
-                                    }  );
-                        
+
+            modelo.addRow(new String[]{
+                String.valueOf(item.getIdCliente()),
+                String.valueOf(item.getNome()),
+                String.valueOf(item.getCpf()),
+                String.valueOf(item.getCep()),
+                String.valueOf(item.getEmail()),
+                String.valueOf(item.getEndereco()),
+                String.valueOf(item.getNumEndereco()),
+                String.valueOf(item.getComplemento())
+            });
+
         }
-                
-     
+
+
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnBusca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusca1ActionPerformed
-        
-        
-        ArrayList<Cliente> listar =  ClienteDAO.buscarPorCpf();
-        
+
+        ArrayList<Cliente> listar = ClienteDAO.buscarPorCpf(fmtCPF.getText());
+
         DefaultTableModel modelo = (DefaultTableModel) tblCliente.getModel();
         modelo.setRowCount(0);
-        
-        
-        
+
         for (Cliente item : listar) {
-            
-            modelo.addRow(new String[]{ 
-                                        String.valueOf(item.getIdCliente()),
-                                        String.valueOf(item.getNome()),
-                                        String.valueOf(item.getCpf()),
-                                        String.valueOf(item.getCep()),
-                                        String.valueOf(item.getEmail()),
-                                        String.valueOf(item.getEndereco()),
-                                        String.valueOf(item.getNumEndereco()),
-                                        String.valueOf(item.getComplemento())
-                                    }  );
-                        
+
+            modelo.addRow(new String[]{
+                String.valueOf(item.getIdCliente()),
+                String.valueOf(item.getNome()),
+                String.valueOf(item.getCpf()),
+                String.valueOf(item.getCep()),
+                String.valueOf(item.getEmail()),
+                String.valueOf(item.getEndereco()),
+                String.valueOf(item.getNumEndereco()),
+                String.valueOf(item.getComplemento())
+            });
+
         }
     }//GEN-LAST:event_btnBusca1ActionPerformed
 
     private void fmtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fmtCPFActionPerformed
-    String cpf = fmtCPF.getText();
+
     }//GEN-LAST:event_fmtCPFActionPerformed
 
     /**

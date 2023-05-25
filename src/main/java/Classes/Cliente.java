@@ -13,7 +13,7 @@ public class Cliente {
         private String cep;
         private String email;
         private String numEndereco;
-        private boolean sexo;
+        private String sexo;
         private String complemento;
         private int idCliente;
 
@@ -31,7 +31,7 @@ public class Cliente {
             
         }
         
-        public Cliente(String nome, String endereco, String cpf, String cep,String email, String numEndereco, Boolean sexo, String complemento){
+        public Cliente(String nome, String endereco, String cpf, String cep,String email, String numEndereco, String sexo, String complemento){
          this.nome = nome;
          this.endereco = endereco;
          this.cpf = cpf;
@@ -49,12 +49,12 @@ public class Cliente {
             
         }
     public String getNome() {
-            return nome;
-        }
+        return nome;
+    }
 
-        public void setNome(String nome) {
-            this.nome = nome;
-        }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
         public String getEndereco() {
             return endereco;
@@ -96,11 +96,11 @@ public class Cliente {
             this.numEndereco = numEndereco;
         }
 
-        public boolean getSexo() {
+        public String getSexo() {
             return sexo;
         }
 
-        public void setSexo(boolean sexo) {
+        public void setSexo(String sexo) {
             this.sexo = sexo;
         }
 
