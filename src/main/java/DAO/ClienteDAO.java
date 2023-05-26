@@ -25,7 +25,7 @@ public class ClienteDAO {
 
     static String URL = "jdbc:mysql://localhost:3306/casadecarne";
     static String Login = "root";
-    static String Senha = "P@$$w0rd";
+    static String Senha = "";
 
     public static boolean cadastrar(Cliente obj) {
         boolean retorno = false;
@@ -67,7 +67,7 @@ public class ClienteDAO {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "P@$$w0rd");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "");
             PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM cliente");
             ResultSet rs = comandoSQL.executeQuery();
 
@@ -81,6 +81,7 @@ public class ClienteDAO {
                     objCliente.setEmail(rs.getString("email"));
                     objCliente.setEndereco(rs.getString("endereco"));
                     objCliente.setNumEndereco(rs.getString("numero"));
+                    objCliente.setSexo(rs.getString("sexo"));
                     objCliente.setComplemento(rs.getString("complemento"));
 
                     lista.add(objCliente);
@@ -108,7 +109,7 @@ public class ClienteDAO {
             // String cpf = cpfInfo;
             String sql = "SELECT * FROM cliente where cpf = '" + cpfInfo + "'";
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "P@$$w0rd");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "");
             PreparedStatement comandoSQL = conexao.prepareStatement(sql);
             ResultSet rs = comandoSQL.executeQuery();
 
@@ -139,4 +140,78 @@ public class ClienteDAO {
         return listar;
     }
 
+    public static ArrayList<Cliente> buscarPorNome(String nomeInfo) {
+
+        // CRUD_Cliente crud_cliente = new CRUD_Cliente();
+        ArrayList<Cliente> listar = new ArrayList<>();
+        Connection conexao = null;
+
+        try {
+
+            String sql = "SELECT * FROM cliente where nome = '" + nomeInfo + "'";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "");
+            PreparedStatement comandoSQL = conexao.prepareStatement(sql);
+            ResultSet rs = comandoSQL.executeQuery();
+
+            if (rs != null) {
+                while (rs.next()) {
+                    Cliente objCliente = new Cliente();
+                    objCliente.setIdCliente(rs.getInt("cod_cli"));
+                    objCliente.setNome(rs.getString("nome"));
+                    objCliente.setEndereco(rs.getString("endereco"));
+                    objCliente.setCpf(rs.getString("cpf"));
+                    objCliente.setCep(rs.getString("cep"));
+                    objCliente.setEmail(rs.getString("email"));
+                    objCliente.setNumEndereco(rs.getString("numero"));
+                    objCliente.setSexo(rs.getString("sexo"));
+                    objCliente.setComplemento(rs.getString("complemento"));
+
+                    listar.add(objCliente);
+
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return listar;
+
+    }
+    public static boolean excluir (int id){
+        boolean retorno = false;
+        Connection conexao = null;
+        
+        try {
+            //Receita de bolo JDBC
+            //Passo 1 - Carregar o Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            //Passo 2 - Abrir conexão
+            //"jdbc:mysql//localhost:3306/basenotafiscal", "root", "")
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/basenotafiscal", "root", "");
+            
+            //Passo 3 - Criar comando SQL
+            PreparedStatement comando = conexao.
+                    prepareStatement("DELETE FROM cliente WHERE cod_cli = ?");
+            
+            comando.setInt(1, id);
+                        
+            int linhasAfetadas = comando.executeUpdate();
+            
+            if(linhasAfetadas>0){
+                retorno = true;
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Erro ao carregar o driver");
+        } catch (SQLException ex) {
+            System.out.println("Erro ao conectar com o banco");
+        }
+        
+        
+        return retorno;
+    }
 }
