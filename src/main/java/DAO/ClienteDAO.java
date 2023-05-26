@@ -25,11 +25,13 @@ public class ClienteDAO {
 
     static String URL = "jdbc:mysql://localhost:3306/casadecarne";
     static String Login = "root";
-    static String Senha = "";
+    static String Senha = "A@1090073061a";
 
+        
     public static boolean cadastrar(Cliente obj) {
         boolean retorno = false;
-
+        
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -67,7 +69,7 @@ public class ClienteDAO {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
             PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM cliente");
             ResultSet rs = comandoSQL.executeQuery();
 
@@ -109,7 +111,7 @@ public class ClienteDAO {
             // String cpf = cpfInfo;
             String sql = "SELECT * FROM cliente where cpf = '" + cpfInfo + "'";
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
             PreparedStatement comandoSQL = conexao.prepareStatement(sql);
             ResultSet rs = comandoSQL.executeQuery();
 
@@ -150,7 +152,7 @@ public class ClienteDAO {
 
             String sql = "SELECT * FROM cliente where nome = '" + nomeInfo + "'";
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "!@1090073061a");
             PreparedStatement comandoSQL = conexao.prepareStatement(sql);
             ResultSet rs = comandoSQL.executeQuery();
 
@@ -185,15 +187,8 @@ public class ClienteDAO {
         Connection conexao = null;
         
         try {
-            //Receita de bolo JDBC
-            //Passo 1 - Carregar o Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            //Passo 2 - Abrir conexão
-            //"jdbc:mysql//localhost:3306/basenotafiscal", "root", "")
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/basenotafiscal", "root", "");
-            
-            //Passo 3 - Criar comando SQL
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/CasaDeCarne", "root", "A@1090073061a");
             PreparedStatement comando = conexao.
                     prepareStatement("DELETE FROM cliente WHERE cod_cli = ?");
             

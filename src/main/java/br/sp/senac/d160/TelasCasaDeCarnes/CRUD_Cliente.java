@@ -90,6 +90,11 @@ public class CRUD_Cliente extends javax.swing.JFrame {
                 tblClienteFocusGained(evt);
             }
         });
+        tblCliente.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
+            public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
+                tblClienteVetoableChange(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblCliente);
 
         btnAlterar.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
@@ -340,7 +345,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
       int indiceLinha = tblCliente.getSelectedRow();
         
-        //TODO: Chamar NotaFiscalDAO
+        
         DefaultTableModel modelo = (DefaultTableModel)tblCliente.getModel();
         int id = Integer.parseInt(modelo.getValueAt(indiceLinha, 0).toString());
         
@@ -358,8 +363,11 @@ public class CRUD_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void tblClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblClienteFocusGained
+                    }//GEN-LAST:event_tblClienteFocusGained
+
+    private void tblClienteVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_tblClienteVetoableChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblClienteFocusGained
+    }//GEN-LAST:event_tblClienteVetoableChange
 
     /**
      * @param args the command line arguments

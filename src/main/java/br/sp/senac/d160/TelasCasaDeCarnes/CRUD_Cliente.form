@@ -164,6 +164,7 @@
               </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tblClienteFocusGained"/>
+                <EventHandler event="vetoableChange" listener="java.beans.VetoableChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblClienteVetoableChange"/>
               </Events>
             </Component>
           </SubComponents>
