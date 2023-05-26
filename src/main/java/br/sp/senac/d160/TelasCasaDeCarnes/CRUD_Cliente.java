@@ -6,7 +6,6 @@ package br.sp.senac.d160.TelasCasaDeCarnes;
 
 import Classes.Cliente;
 import DAO.ClienteDAO;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -283,9 +282,31 @@ public class CRUD_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscaNomeActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        CadastroCliente cadastro = new CadastroCliente();
-        cadastro.setVisible(true);
-        cadastro.setDefaultCloseOperation(Estoque.DISPOSE_ON_CLOSE);
+        int indiceLinha = tblCliente.getSelectedRow();
+        
+        DefaultTableModel modelo = (DefaultTableModel)tblCliente.getModel();
+        String nome = (modelo.getValueAt(indiceLinha, 1).toString());
+        String cpf = (modelo.getValueAt(indiceLinha, 2).toString());
+        String cep = (modelo.getValueAt(indiceLinha, 3).toString());
+        String email = (modelo.getValueAt(indiceLinha, 4 ).toString());
+        String endereco = (modelo.getValueAt(indiceLinha, 5 ).toString());
+        String numero = (modelo.getValueAt(indiceLinha, 6 ).toString());
+        String sexo = (modelo.getValueAt(indiceLinha,7).toString());
+        String complemento = (modelo.getValueAt(indiceLinha, 8).toString());
+        
+        Cliente obj = new Cliente();
+        obj.setNome(nome);
+        obj.setCpf(cpf);
+        obj.setCep(cep);
+        obj.setEmail(email);
+        obj.setEndereco(endereco);
+        obj.setNumEndereco(numero);
+        obj.setSexo(sexo);
+        obj.setComplemento(complemento);
+        
+        CadastroCliente telaCadastro = new CadastroCliente(obj);
+        telaCadastro.setVisible(true);
+        
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed

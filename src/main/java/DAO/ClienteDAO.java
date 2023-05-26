@@ -209,4 +209,42 @@ public class ClienteDAO {
         
         return retorno;
     }
+        public static boolean alterar(Cliente obj){
+      boolean retorno = false;
+        Connection conexao = null;
+        
+        try {
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+           
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/basenotafiscal", "root", "A@1090073061a");
+            
+            PreparedStatement comando = conexao.
+            prepareStatement("UPDATE cliente SET nome = ?, cpf =?, cep = ?, email = ?, endereco = ?, numero = ?, sexo = ?, complemento = ? WHERE cod_cli = ?");
+         
+            comando.setString(1, obj.getNome());
+            comando.setString(2, obj.getCpf());
+            comando.setString(3, obj.getCep());
+            comando.setString(4, obj.getEmail());
+            comando.setString(5, obj.getEndereco());
+            comando.setString(6, obj.getNumEndereco());
+            comando.setString(7, obj.getSexo());
+            comando.setString(8, obj.getComplemento());
+            
+            int linhasAfetadas = comando.executeUpdate();
+            
+            if(linhasAfetadas>0){
+                retorno = true;
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Erro ao carregar o driver");
+        } catch (SQLException ex) {
+            System.out.println("Erro ao conectar com o banco");
+        }
+        
+        
+        return retorno;
+         
+     }
 }

@@ -14,15 +14,37 @@ import javax.swing.JOptionPane;
  */
 public class CadastroCliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaCliente
-     */
+  
+   private Cliente objCliente;
+   
     public CadastroCliente() {
         initComponents();
-        setLocationRelativeTo(null);
     }
-    boolean sexo;
-    @SuppressWarnings("unchecked")
+    
+    public CadastroCliente(Cliente pObj){
+        initComponents();
+        
+        txtNome.setText(String.valueOf(pObj.getNome()));
+        fmtCPF.setText(String.valueOf(pObj.getCpf()));
+        fmtCEP.setText(String.valueOf(pObj.getCep()));
+        txtEmail.setText(String.valueOf(pObj.getEmail()));
+        txtEndereco.setText(String.valueOf(pObj.getEndereco()));
+        txtNumero.setText(String.valueOf(pObj.getNumEndereco()));
+        
+        
+        if (btnFem.isSelected()){
+            btnFem.setText("Feminino");
+           btnFem.setText(String.valueOf(pObj.getSexo())); 
+        } else if (btnMasc.isSelected()){
+            btnMasc.setText("Masculino");
+            btnMasc.setText(String.valueOf(pObj.getSexo()));
+        }
+        
+        txtComplemento.setText(String.valueOf(pObj.getComplemento()));
+        
+        objCliente = pObj;
+        
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -299,13 +321,13 @@ public class CadastroCliente extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(lblNomeInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblEmailInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(fmtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblCPFInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(lblCPFInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblEmailInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -569,6 +591,46 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
+        
+       if(objCliente!= null && objCliente.getIdCliente()>0 ){
+          
+            String novoSexo = null;
+            
+            String novoNome = (txtNome.getText());
+            String novoCpf = (fmtCPF.getText());
+            String novoCep = (fmtCEP.getText());
+            String novoEmail = (txtEmail.getText());
+            String novoNumero = (txtNumero.getText());
+             
+            if(btnMasc.isSelected()) {
+            btnMasc.setText("Masculino");
+            novoSexo = "Masculino";
+            } else if (btnFem.isSelected()) {
+            btnFem.setText("Feminino");
+            novoSexo = "Feminino";
+             }
+            String novoComplemento = (txtComplemento.getText());
+             
+            objCliente.setNome(novoNome);
+            objCliente.setCpf(novoCpf);
+            objCliente.setCep(novoCep);
+            objCliente.setEmail(novoEmail);
+            objCliente.setNumEndereco(novoNumero);
+            objCliente.setSexo(novoSexo);
+            objCliente.setComplemento(novoComplemento);
+            
+            
+           
+            boolean retorno = ClienteDAO.alterar(objCliente);
+            
+            if(retorno){
+                JOptionPane.showMessageDialog(rootPane, "Sucesso na alteração");
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Fracasso na alteração!");
+            } 
+            
+            
+       } else {
         String sexo = null;
         
         
@@ -580,6 +642,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         String numEndereco = (txtNumero.getText());
         if(btnMasc.isSelected()) {
             sexo = "Masculino";
+            
         } else if (btnFem.isSelected()) {
             sexo = "Feminino";
         }
@@ -603,7 +666,12 @@ public class CadastroCliente extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Falha na gravação!");
         }
-
+        
+        
+        }
+            
+        
+        
     }//GEN-LAST:event_btnCadastroActionPerformed
 
     /**
