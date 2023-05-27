@@ -12,34 +12,33 @@ import javax.swing.JOptionPane;
  */
 public class CadastroCliente extends javax.swing.JFrame {
 
-  
-   private Cliente objCliente;
-   
+    private Cliente objCliente;
+
     public CadastroCliente() {
         initComponents();
     }
-    
-    public CadastroCliente(Cliente pObj){
+
+    public CadastroCliente(Cliente pObj) {
         initComponents();
-        
+
         txtNome.setText(String.valueOf(pObj.getNome()));
         fmtCPF.setText(String.valueOf(pObj.getCpf()));
         fmtCEP.setText(String.valueOf(pObj.getCep()));
         txtEmail.setText(String.valueOf(pObj.getEmail()));
         txtEndereco.setText(String.valueOf(pObj.getEndereco()));
         txtNumero.setText(String.valueOf(pObj.getNumEndereco()));
-        
-        if (btnFem.isSelected()){
+
+        if (btnFem.isSelected()) {
             btnFem.setText("Feminino");
-           btnFem.setText(String.valueOf(pObj.getSexo())); 
-        } else if (btnMasc.isSelected()){
+            btnFem.setText(String.valueOf(pObj.getSexo()));
+        } else if (btnMasc.isSelected()) {
             btnMasc.setText("Masculino");
             btnMasc.setText(String.valueOf(pObj.getSexo()));
         }
         txtComplemento.setText(String.valueOf(pObj.getComplemento()));
-        
+
         objCliente = pObj;
-        
+
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -589,61 +588,58 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-      
-        
-       if(objCliente!= null && objCliente.getIdCliente()>0){
-          
-          
-        String sexo = null;
-        
-        
-        String nome = (txtNome.getText());
-        String endereco = (txtEndereco.getText());
-        String cpf = (fmtCPF.getText());
-        String cep = (fmtCEP.getText()); 
-        String email = (txtEmail.getText());
-        String numEndereco = (txtNumero.getText());
-        if(btnMasc.isSelected()) {
-            sexo = "Masculino";
+
+        if (objCliente != null && objCliente.getCpf() != null) {
+
+            String sexo = null;
             
-        } else if (btnFem.isSelected()) {
-            sexo = "Feminino";
-        }
-        
-        String complemente = (txtComplemento.getText());
+            String nome = (txtNome.getText());
+            String endereco = (txtEndereco.getText());
+            String cpf = (fmtCPF.getText());
+            String cep = (fmtCEP.getText());
+            String email = (txtEmail.getText());
+            String numEndereco = (txtNumero.getText());
+            if (btnMasc.isSelected()) {
+                sexo = "Masculino";
 
-        Cliente objCliente = new Cliente();
-        objCliente.setNome(nome);
-        objCliente.setEndereco(endereco);
-        objCliente.setCpf(cpf);
-        objCliente.setCep(cep);
-        objCliente.setEmail(email);
-        objCliente.setNumEndereco(numEndereco);
-        objCliente.setSexo(sexo);
-        objCliente.setComplemento(complemente);
+            } else if (btnFem.isSelected()) {
+                sexo = "Feminino";
+            }
 
-        boolean retorno = ClienteDAO.cadastrar(objCliente);
+            String complemente = (txtComplemento.getText());
 
-        if (retorno) {
-            JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
+            Cliente objCliente = new Cliente();
+            
+            objCliente.setNome(nome);
+            objCliente.setEndereco(endereco);
+            objCliente.setCpf(cpf);
+            objCliente.setCep(cep);
+            objCliente.setEmail(email);
+            objCliente.setNumEndereco(numEndereco);
+            objCliente.setSexo(sexo);
+            objCliente.setComplemento(complemente);
+
+            boolean retorno = ClienteDAO.alterar(objCliente);
+
+            if (retorno) {
+                JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Falha na gravação!");
+            }
+
         } else {
-            JOptionPane.showMessageDialog(this, "Falha na gravação!");
-        }
-        
-        
-       }else{
-           String sexo = null;
-           
+            String sexo = null;
+
             String nome = (txtNome.getText());
             String endereco = (txtNumero.getText());
             String cpf = (fmtCPF.getText());
             String cep = (fmtCEP.getText());
             String email = (txtEmail.getText());
             String numero = (txtNumero.getText());
-            
-            if (btnFem.isSelected()){
+
+            if (btnFem.isSelected()) {
                 sexo = "Feminino";
-            }else if (btnMasc.isSelected()){
+            } else if (btnMasc.isSelected()) {
                 sexo = "Masculino";
             }
             String complemento = (txtComplemento.getText());
@@ -652,7 +648,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             obj.setNome(nome);
             obj.setCpf(cpf);
             obj.setCep(cep);
-            obj.setEmail(email); 
+            obj.setEmail(email);
             obj.setEndereco(endereco);
             obj.setNumEndereco(numero);
             obj.setSexo(sexo);
@@ -660,15 +656,14 @@ public class CadastroCliente extends javax.swing.JFrame {
 
             boolean retorno = ClienteDAO.cadastrar(obj);
 
-            if(retorno){
+            if (retorno) {
                 JOptionPane.showMessageDialog(rootPane, "Sucesso no cadastro");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Fracasso!");
             }
         }
-            
-        
-        
+
+
     }//GEN-LAST:event_btnCadastroActionPerformed
 
     /**
@@ -706,8 +701,6 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
     }
-    
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
