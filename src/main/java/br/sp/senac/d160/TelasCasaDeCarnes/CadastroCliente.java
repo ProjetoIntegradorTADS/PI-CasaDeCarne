@@ -1,11 +1,9 @@
 package br.sp.senac.d160.TelasCasaDeCarnes;
 
-import br.sp.senac.d160.TelasCasaDeCarnes.CRUD_Cliente;
+
 import Classes.Cliente;
 import DAO.ClienteDAO;
-import br.sp.senac.d160.TelasCasaDeCarnes.Estoque;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**

@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-    
+   
 public class Estoque extends javax.swing.JFrame {
-    private Estoque objEstoque;
+    private Produtos objEstoque;
     
     public Estoque() {
         initComponents();
@@ -28,7 +28,7 @@ public class Estoque extends javax.swing.JFrame {
         txtQntAdcPrdt.setText(String.valueOf(pObj.getQuantidade()));
         txtValorAdcPrdt.setText(String.valueOf(pObj.getValorProduto()));
         
-     
+        objEstoque = pObj;
         
     }
     @SuppressWarnings("unchecked")
@@ -333,7 +333,7 @@ public class Estoque extends javax.swing.JFrame {
         obj.setQuantidade(qntProd);
         obj.setValorProduto(vlrProd);
      
-        
+        obj = pObj;
        
     }//GEN-LAST:event_btnAlterarActionPerformed
 
