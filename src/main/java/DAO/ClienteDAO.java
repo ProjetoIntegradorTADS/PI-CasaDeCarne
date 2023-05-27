@@ -38,7 +38,7 @@ public class ClienteDAO {
             Connection conexao = DriverManager.getConnection(URL, Login, Senha);
 
             PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO cliente ( Nome,Endereco,Cpf,Cep,Email,Numero,sexo,complemento) VALUES (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            
+
             comandoSQL.setString(1, obj.getNome());
             comandoSQL.setString(2, obj.getEndereco());
             comandoSQL.setString(3, obj.getCpf());
@@ -102,13 +102,13 @@ public class ClienteDAO {
 
     public static ArrayList<Cliente> buscarPorCpf(String cpfInfo) {
 
-       
+        // CRUD_Cliente crud_cliente = new CRUD_Cliente();
         ArrayList<Cliente> listar = new ArrayList<>();
         Connection conexao = null;
 
         try {
 
-          
+            // String cpf = cpfInfo;
             String sql = "SELECT * FROM cliente where cpf = '" + cpfInfo + "'";
             Class.forName("com.mysql.cj.jdbc.Driver");
             conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
@@ -188,7 +188,7 @@ public class ClienteDAO {
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061");
             PreparedStatement comando = conexao.
                     prepareStatement("DELETE FROM cliente WHERE cod_cli = ?");
             
@@ -220,15 +220,14 @@ public class ClienteDAO {
             conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
             
             PreparedStatement comando = conexao.
-                    
-            prepareStatement("UPDATE cliente SET nome = ?, cpf =?, cep = ?, email = ?,endereco = ?, numero = ?, sexo = ?, complemento = ? WHERE cod_cli = ?");
+            prepareStatement("UPDATE cliente SET nome = ?, cpf =?, cep = ?, email = ?, endereco = ?, numero = ?, sexo = ?, complemento = ? WHERE cod_cli = ?");
           
-            comando.setInt(0, obj.getIdCliente());
+            
             comando.setString(1, obj.getNome());
-            comando.setString(5, obj.getEndereco());
             comando.setString(2, obj.getCpf());
             comando.setString(3, obj.getCep());
             comando.setString(4, obj.getEmail());
+            comando.setString(5, obj.getEndereco());
             comando.setString(6, obj.getNumEndereco());
             comando.setString(7, obj.getSexo());
             comando.setString(8, obj.getComplemento());

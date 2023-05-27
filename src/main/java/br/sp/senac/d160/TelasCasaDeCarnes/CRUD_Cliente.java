@@ -282,10 +282,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscaNomeActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        
         int indiceLinha = tblCliente.getSelectedRow();
-    
-        
         
         DefaultTableModel modelo = (DefaultTableModel)tblCliente.getModel();
         String nome = (modelo.getValueAt(indiceLinha, 1).toString());
