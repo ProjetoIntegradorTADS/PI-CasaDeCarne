@@ -31,7 +31,6 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtEndereco.setText(String.valueOf(pObj.getEndereco()));
         txtNumero.setText(String.valueOf(pObj.getNumEndereco()));
         
-        
         if (btnFem.isSelected()){
             btnFem.setText("Feminino");
            btnFem.setText(String.valueOf(pObj.getSexo())); 
@@ -39,7 +38,6 @@ public class CadastroCliente extends javax.swing.JFrame {
             btnMasc.setText("Masculino");
             btnMasc.setText(String.valueOf(pObj.getSexo()));
         }
-        
         txtComplemento.setText(String.valueOf(pObj.getComplemento()));
         
         objCliente = pObj;
@@ -592,11 +590,12 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         
-       if(objCliente!= null && objCliente.getIdCliente()>0 ){
+       if(objCliente!= null ){
           
             String novoSexo = null;
             
             String novoNome = (txtNome.getText());
+            String novoEndereco = (txtEndereco.getText());
             String novoCpf = (fmtCPF.getText());
             String novoCep = (fmtCEP.getText());
             String novoEmail = (txtEmail.getText());
@@ -612,6 +611,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             String novoComplemento = (txtComplemento.getText());
              
             objCliente.setNome(novoNome);
+            objCliente.setEndereco(novoEndereco);
             objCliente.setCpf(novoCpf);
             objCliente.setCep(novoCep);
             objCliente.setEmail(novoEmail);
@@ -636,9 +636,9 @@ public class CadastroCliente extends javax.swing.JFrame {
         
         String nome = (txtNome.getText());
         String endereco = (txtEndereco.getText());
-        String email = (txtEmail.getText());
         String cpf = (fmtCPF.getText());
-        String cep = (fmtCEP.getText());
+        String cep = (fmtCEP.getText()); 
+        String email = (txtEmail.getText());
         String numEndereco = (txtNumero.getText());
         if(btnMasc.isSelected()) {
             sexo = "Masculino";

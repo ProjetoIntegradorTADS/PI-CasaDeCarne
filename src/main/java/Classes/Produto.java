@@ -4,8 +4,12 @@ package Classes;
 import java.util.ArrayList;
 
 /* Classe com informacoes do Produto  */
+
+    
+
 public class Produto {
-        
+    
+   
 
         private ArrayList<Produto> listaProdutos = null;
 

@@ -25,7 +25,7 @@ public class ClienteDAO {
 
     static String URL = "jdbc:mysql://localhost:3306/casadecarne";
     static String Login = "root";
-    static String Senha = "A@1090073061a";
+    static String Senha = "p@$$w0rd";
 
         
     public static boolean cadastrar(Cliente obj) {
@@ -69,7 +69,7 @@ public class ClienteDAO {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "p@$$w0rd");
             PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM cliente");
             ResultSet rs = comandoSQL.executeQuery();
 
@@ -111,7 +111,7 @@ public class ClienteDAO {
             // String cpf = cpfInfo;
             String sql = "SELECT * FROM cliente where cpf = '" + cpfInfo + "'";
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "p@$$w0rd");
             PreparedStatement comandoSQL = conexao.prepareStatement(sql);
             ResultSet rs = comandoSQL.executeQuery();
 
@@ -152,7 +152,7 @@ public class ClienteDAO {
 
             String sql = "SELECT * FROM cliente where nome = '" + nomeInfo + "'";
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "!@1090073061a");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "p@$$w0rd");
             PreparedStatement comandoSQL = conexao.prepareStatement(sql);
             ResultSet rs = comandoSQL.executeQuery();
 
@@ -188,7 +188,7 @@ public class ClienteDAO {
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/CasaDeCarne", "root", "A@1090073061a");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "p@$$w0rd");
             PreparedStatement comando = conexao.
                     prepareStatement("DELETE FROM cliente WHERE cod_cli = ?");
             
@@ -217,16 +217,17 @@ public class ClienteDAO {
             
             Class.forName("com.mysql.cj.jdbc.Driver");
            
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/basenotafiscal", "root", "A@1090073061a");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "p@$$w0rd");
             
             PreparedStatement comando = conexao.
-            prepareStatement("UPDATE cliente SET nome = ?, cpf =?, cep = ?, email = ?, endereco = ?, numero = ?, sexo = ?, complemento = ? WHERE cod_cli = ?");
-         
+            prepareStatement("UPDATE cliente SET nome = ?, endereco = ?, cpf =?, cep = ?, email = ?, endereco = ?, numero = ?, sexo = ?, complemento = ? WHERE cod_cli = ?");
+          
+            
             comando.setString(1, obj.getNome());
-            comando.setString(2, obj.getCpf());
-            comando.setString(3, obj.getCep());
-            comando.setString(4, obj.getEmail());
-            comando.setString(5, obj.getEndereco());
+            comando.setString(2, obj.getEndereco());
+            comando.setString(3, obj.getCpf());
+            comando.setString(4, obj.getCep());
+            comando.setString(5, obj.getEmail());
             comando.setString(6, obj.getNumEndereco());
             comando.setString(7, obj.getSexo());
             comando.setString(8, obj.getComplemento());
