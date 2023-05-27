@@ -19,19 +19,14 @@ public class AlterarEstoque extends javax.swing.JPanel {
         initComponents();
     }
 
-    public Estoque(Produto pObj){
+    public AlterarEstoque(Estoque pObj){
         initComponents();
         
-        txtNome.setText(String.valueOf(pObj.getNome()));
-        fmtCPF.setText(String.valueOf(pObj.getCpf()));
-        fmtCEP.setText(String.valueOf(pObj.getCep()));
-        txtEmail.setText(String.valueOf(pObj.getEmail()));
-        txtEndereco.setText(String.valueOf(pObj.getEndereco()));
-        txtNumero.setText(String.valueOf(pObj.getNumEndereco()));
-        
-
-        
-        txtComplemento.setText(String.valueOf(pObj.getComplemento()));
+        txtNomeAlt.setText(String.valueOf(pObj.get()));
+        txtQntAlt.setText(String.valueOf(pObj.getCpf()));
+        txtVlrAlt.setText(String.valueOf(pObj.getCep()));
+       
+ 
         
          = pObj;
     }
@@ -47,9 +42,9 @@ public class AlterarEstoque extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtNomeAlt = new javax.swing.JTextField();
+        txtQntAlt = new javax.swing.JTextField();
+        txtVlrAlt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("Nome Produto");
@@ -75,18 +70,18 @@ public class AlterarEstoque extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(63, 63, 63)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNomeAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButton1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtVlrAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtQntAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -95,15 +90,15 @@ public class AlterarEstoque extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNomeAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtQntAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtVlrAlt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addContainerGap(7, Short.MAX_VALUE))
@@ -120,8 +115,8 @@ public class AlterarEstoque extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtNomeAlt;
+    private javax.swing.JTextField txtQntAlt;
+    private javax.swing.JTextField txtVlrAlt;
     // End of variables declaration//GEN-END:variables
 }

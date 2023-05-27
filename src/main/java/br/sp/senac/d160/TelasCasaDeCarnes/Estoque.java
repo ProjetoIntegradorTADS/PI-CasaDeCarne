@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
    
 public class Estoque extends javax.swing.JFrame {
-    private Produtos objEstoque;
+    private Produto objEstoque;
     
     public Estoque() {
         initComponents();
@@ -333,7 +333,10 @@ public class Estoque extends javax.swing.JFrame {
         obj.setQuantidade(qntProd);
         obj.setValorProduto(vlrProd);
      
-        obj = pObj;
+            AlterarEstoque altEstoque = new AlterarEstoque(this);
+        altEstoque.setVisible(true);
+        
+        
        
     }//GEN-LAST:event_btnAlterarActionPerformed
 
@@ -350,6 +353,7 @@ public class Estoque extends javax.swing.JFrame {
                 String.valueOf(item.getNomeProduto()),
                 String.valueOf(item.getQuantidade()),
                 String.valueOf(item.getValorProduto())
+                    
               
             });
 
