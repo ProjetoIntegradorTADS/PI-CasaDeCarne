@@ -96,7 +96,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblCliente);
 
-        btnAlterar.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
+        btnAlterar.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setPreferredSize(new java.awt.Dimension(75, 28));
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +105,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
             }
         });
 
-        btnExcluir.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
+        btnExcluir.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setMaximumSize(new java.awt.Dimension(77, 28));
         btnExcluir.setMinimumSize(new java.awt.Dimension(77, 28));

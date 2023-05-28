@@ -178,4 +178,8 @@ public class ProdutoDAO {
         return retorno;
 
     }
+
+    public Iterable<Produto> read() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

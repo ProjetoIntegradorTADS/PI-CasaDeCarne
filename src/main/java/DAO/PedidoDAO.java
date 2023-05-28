@@ -1,16 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
-import Classes.Pedido;
 
+import Classes.Pedido;
+import Classes.Produto;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.*;
+import java.sql.*;
 /**
  *
  * @author SALOMAO.FLIMA
@@ -49,4 +51,79 @@ public class PedidoDAO {
 
     }
 
+    public static ArrayList<Pedido> buscarPorCpf(String cpfPed) {
+
+        ArrayList<Pedido> listarPorCpf = new ArrayList<>();
+        Connection conexao = null;
+
+        try {
+
+            String sql = "SELECT * FROM estoque where fk_cpf = '" + cpfPed + "'";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conexao = DriverManager.getConnection(URL, Login, Senha);
+            PreparedStatement comandoSQL = conexao.prepareStatement(sql);
+            ResultSet rs = comandoSQL.executeQuery();
+
+            if (rs != null) {
+                while (rs.next()) {
+                    Pedido consultaPorCpf= new Pedido();
+                    consultaPorCpf.setNumeroPedido(rs.getInt("idPedido"));
+                    consultaPorCpf.setCpfCliente(rs.getString("fk_cpf"));
+                    consultaPorCpf.setNomeProd(rs.getString("fk_NomeProd"));
+                    consultaPorCpf.setQuantidade(rs.getInt("qntPed"));
+                    consultaPorCpf.setPrecoKg(rs.getFloat("fk_PrecoKg"));
+                    consultaPorCpf.setValorTotal(rs.getFloat("vlrTotal"));
+                    listarPorCpf.add(consultaPorCpf);
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return listarPorCpf;
+    }
+     public static ArrayList<Pedido> mostrarLista() {
+
+        ArrayList<Pedido> lista = new ArrayList<>();
+        Connection conexao = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
+            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * From estoque;");
+            ResultSet rs = comandoSQL.executeQuery();
+
+            if (rs != null) {
+                while (rs.next()) {
+                    Pedido objPedido = new Pedido();
+                    objPedido.setNomeProd(rs.getString("nomeProd"));
+                  
+                    lista.add(objPedido);
+
+                }
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return lista;
+    }
+
 }
+
+
+       
+    
+
+
+
+        
+      
+
+
+    
