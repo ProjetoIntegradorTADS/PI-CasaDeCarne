@@ -20,7 +20,8 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     public CadastroCliente(Cliente pObj) {
         initComponents();
-
+        
+        lblId.setText(String.valueOf(pObj.getIdCliente()));
         txtNome.setText(String.valueOf(pObj.getNome()));
         fmtCPF.setText(String.valueOf(pObj.getCpf()));
         fmtCEP.setText(String.valueOf(pObj.getCep()));
@@ -71,6 +72,8 @@ public class CadastroCliente extends javax.swing.JFrame {
         lblCEPInfo = new javax.swing.JLabel();
         lblSexoInfo = new javax.swing.JLabel();
         btnExcluir = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        lblId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -259,6 +262,8 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Id Cliente:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -266,6 +271,11 @@ public class CadastroCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(lblEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -329,13 +339,18 @@ public class CadastroCliente extends javax.swing.JFrame {
                                 .addComponent(btnCadastro)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnExcluir)
                         .addGap(214, 214, 214))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNomeInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -592,7 +607,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         if (objCliente != null && objCliente.getCpf() != null) {
 
             String sexo = null;
-            
+            int idCliente = Integer.parseInt(lblId.getText());
             String nome = (txtNome.getText());
             String endereco = (txtEndereco.getText());
             String cpf = (fmtCPF.getText());
@@ -610,6 +625,7 @@ public class CadastroCliente extends javax.swing.JFrame {
 
             Cliente objCliente = new Cliente();
             
+            objCliente.setIdCliente(idCliente);
             objCliente.setNome(nome);
             objCliente.setEndereco(endereco);
             objCliente.setCpf(cpf);
@@ -713,6 +729,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField fmtCPF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCEPInfo;
     private javax.swing.JLabel lblCPF;
@@ -723,6 +740,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblEndereco1;
     private javax.swing.JLabel lblEndereco2;
     private javax.swing.JLabel lblEnderecoInfo;
+    private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblInfo;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNomeInfo;

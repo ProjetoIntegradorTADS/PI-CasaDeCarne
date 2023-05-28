@@ -4,38 +4,32 @@
  */
 package br.sp.senac.d160.TelasCasaDeCarnes;
 
-import Classes.Cliente;
 import Classes.Produto;
-import DAO.ClienteDAO;
 import DAO.ProdutoDAO;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
-   
 public class CadastroProdutos extends javax.swing.JFrame {
+
     private Produto objProduto;
-    
-   
-    
+
     public CadastroProdutos() {
         initComponents();
     }
-    
-    
-     public CadastroProdutos(Produto pObj){
-        
+
+    public CadastroProdutos(Produto pObj) {
+
         initComponents();
         
+        lblCodProd.setText(String.valueOf(pObj.getCodProduto()));
         txtNomeAdcPrdt.setText(String.valueOf(pObj.getNomeProduto()));
         txtQntAdcPrdt.setText(String.valueOf(pObj.getQuantidade()));
         txtValorAdcPrdt.setText(String.valueOf(pObj.getValorProduto()));
-        
+
         objProduto = pObj;
-        
+
     }
-    @SuppressWarnings("unchecked")
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -48,6 +42,8 @@ public class CadastroProdutos extends javax.swing.JFrame {
         lblValorAdcPrdt = new javax.swing.JLabel();
         txtValorAdcPrdt = new javax.swing.JTextField();
         lblInfo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblCodProd = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnTelaProp = new javax.swing.JButton();
 
@@ -96,24 +92,34 @@ public class CadastroProdutos extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("CodProduto:");
+
+        lblCodProd.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                lblCodProdInputMethodTextChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout AdicionarProdutoLayout = new javax.swing.GroupLayout(AdicionarProduto);
         AdicionarProduto.setLayout(AdicionarProdutoLayout);
         AdicionarProdutoLayout.setHorizontalGroup(
             AdicionarProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdicionarProdutoLayout.createSequentialGroup()
-                .addComponent(lblNomeAdcPrdt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(35, 35, 35)
                 .addGroup(AdicionarProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AdicionarProdutoLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
                         .addComponent(lblInfo)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdicionarProdutoLayout.createSequentialGroup()
                         .addGroup(AdicionarProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAdcEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(AdicionarProdutoLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnAdcEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(AdicionarProdutoLayout.createSequentialGroup()
-                                .addComponent(txtNomeAdcPrdt, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                                .addComponent(lblNomeAdcPrdt)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNomeAdcPrdt, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblQntAdcPrdt)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -123,11 +129,21 @@ public class CadastroProdutos extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtValorAdcPrdt, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(52, 52, 52))))
+            .addGroup(AdicionarProdutoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCodProd, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         AdicionarProdutoLayout.setVerticalGroup(
             AdicionarProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdicionarProdutoLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(8, 8, 8)
+                .addGroup(AdicionarProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblCodProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AdicionarProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNomeAdcPrdt)
                     .addComponent(txtNomeAdcPrdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,11 +212,11 @@ public class CadastroProdutos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtValorAdcPrdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorAdcPrdtActionPerformed
-     
+
     }//GEN-LAST:event_txtValorAdcPrdtActionPerformed
 
     private void txtQntAdcPrdtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQntAdcPrdtKeyTyped
-       /*    comentamos a validação por erro ao subir informações pro banco de dados
+        /*    comentamos a validação por erro ao subir informações pro banco de dados
         
         char c = evt.getKeyChar();
         if (((c < '0') ||  (c > '9'))&& (c != KeyEvent.VK_BACK_SPACE) ) {
@@ -209,12 +225,12 @@ public class CadastroProdutos extends javax.swing.JFrame {
         } else {
             this.lblInfo.setText("");
         }
-    */
-     
+         */
+
     }//GEN-LAST:event_txtQntAdcPrdtKeyTyped
 
     private void txtValorAdcPrdtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorAdcPrdtKeyTyped
-     /* comentamos a validação por erro ao subir informações pro banco de dados
+        /* comentamos a validação por erro ao subir informações pro banco de dados
         
         char c = evt.getKeyChar();
         if (((c < '0')  || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) ) {
@@ -223,19 +239,19 @@ public class CadastroProdutos extends javax.swing.JFrame {
         } else {
             this.lblInfo.setText("");
         }
-    */
+         */
     }//GEN-LAST:event_txtValorAdcPrdtKeyTyped
 
     private void txtNomeAdcPrdtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeAdcPrdtKeyTyped
-           char c = evt.getKeyChar();
-        if ((((c < 'a') || (c > 'z')) && (c < 'A' || c> 'Z') && c >' ') && (c != KeyEvent.VK_BACK_SPACE)) {
+        char c = evt.getKeyChar();
+        if ((((c < 'a') || (c > 'z')) && (c < 'A' || c > 'Z') && c > ' ') && (c != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
             this.lblInfo.setText("Somente Letras Neste Campo");
         } else {
             this.lblInfo.setText("");
         }
-    
-    
+
+
     }//GEN-LAST:event_txtNomeAdcPrdtKeyTyped
 
     private void txtNomeAdcPrdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeAdcPrdtActionPerformed
@@ -243,57 +259,57 @@ public class CadastroProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeAdcPrdtActionPerformed
 
     private void btnAdcEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdcEstoqueActionPerformed
-    
-         if (objProduto != null && objProduto.getNomeProduto()!= null) {
+        if (objProduto != null && objProduto.getNomeProduto() != null) {
+            
+            
+            int idCliente = Integer.parseInt(lblCodProd.getText());
             String nome = (txtNomeAdcPrdt.getText());
-            Float qntProd = Float.parseFloat(txtQntAdcPrdt.getText().toString());
-            Float vlrProd = Float.parseFloat(txtValorAdcPrdt.getText().toString());
+            Float qntProd = Float.valueOf(txtQntAdcPrdt.getText());
+            Float vlrProd = Float.valueOf(txtValorAdcPrdt.getText());
 
             Produto objProduto = new Produto();
             
+            objProduto.setCodProduto(idCliente);
             objProduto.setNomeProduto(nome);
             objProduto.setQuantidade(qntProd);
             objProduto.setValorProduto(vlrProd);
             
-
-            boolean retorno = ProdutoDAO.alterar(objProduto);
+            boolean retorno = ProdutoDAO.alterarEstoque(objProduto);
 
             if (retorno) {
-                JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
+                JOptionPane.showMessageDialog(this, "Alteração Bem Sucedida!");
             } else {
-                JOptionPane.showMessageDialog(this, "Falha na gravação!");
+                JOptionPane.showMessageDialog(this, "Falha na Alteração!");
             }
-         }
-            else{
-        
-    
-            
-        String nomeProduto = (txtNomeAdcPrdt.getText());
-        Float quantidade = Float.parseFloat(txtQntAdcPrdt.getText().toString());
-        Float valorPorKg = Float.parseFloat(txtValorAdcPrdt.getText().toString());
-      
-
-        Produto objProduto = new Produto();
-        objProduto.setNomeProduto(nomeProduto);
-        objProduto.setQuantidade(quantidade);
-        objProduto.setValorProduto(valorPorKg);
-        
-    
-
-        boolean retorno = ProdutoDAO.adicionarEstoque(objProduto);
-        
-        if (retorno) {
-            JOptionPane.showMessageDialog(this, "Produto Adicionado");
         } else {
-            JOptionPane.showMessageDialog(this, "Falha na Adição");
+
+            String nomeProduto = (txtNomeAdcPrdt.getText());
+            Float quantidade = Float.valueOf(txtQntAdcPrdt.getText());
+            Float valorPorKg = Float.valueOf(txtValorAdcPrdt.getText());
+
+            Produto objProduto = new Produto();
+            objProduto.setNomeProduto(nomeProduto);
+            objProduto.setQuantidade(quantidade);
+            objProduto.setValorProduto(valorPorKg);
+
+            boolean retorno = ProdutoDAO.adicionarEstoque(objProduto);
+
+            if (retorno) {
+                JOptionPane.showMessageDialog(this, "Produto Adicionado");
+            } else {
+                JOptionPane.showMessageDialog(this, "Falha na Adição");
+            }
         }
-         }
     }//GEN-LAST:event_btnAdcEstoqueActionPerformed
 
     private void btnTelaPropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelaPropActionPerformed
-    CRUD_Estoque estoque = new CRUD_Estoque();
-    estoque.setVisible(true);
+        CRUD_Estoque estoque = new CRUD_Estoque();
+        estoque.setVisible(true);
     }//GEN-LAST:event_btnTelaPropActionPerformed
+
+    private void lblCodProdInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_lblCodProdInputMethodTextChanged
+    
+    }//GEN-LAST:event_lblCodProdInputMethodTextChanged
 
     /**
      * @param args the command line arguments
@@ -341,7 +357,9 @@ public class CadastroProdutos extends javax.swing.JFrame {
     private javax.swing.JPanel AdicionarProduto;
     private javax.swing.JButton btnAdcEstoque;
     private javax.swing.JButton btnTelaProp;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblCodProd;
     private javax.swing.JLabel lblInfo;
     private javax.swing.JLabel lblNomeAdcPrdt;
     private javax.swing.JLabel lblQntAdcPrdt;

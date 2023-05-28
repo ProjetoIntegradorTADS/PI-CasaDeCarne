@@ -285,6 +285,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
         int indiceLinha = tblCliente.getSelectedRow();
         
         DefaultTableModel modelo = (DefaultTableModel)tblCliente.getModel();
+        int idCliente = Integer.parseInt(modelo.getValueAt(indiceLinha, 0).toString());
         String nome = (modelo.getValueAt(indiceLinha, 1).toString());
         String cpf = (modelo.getValueAt(indiceLinha, 2).toString());
         String cep = (modelo.getValueAt(indiceLinha, 3).toString());
@@ -295,6 +296,7 @@ public class CRUD_Cliente extends javax.swing.JFrame {
         String complemento = (modelo.getValueAt(indiceLinha, 8).toString());
         
         Cliente obj = new Cliente();
+        obj.setIdCliente(idCliente);
         obj.setNome(nome);
         obj.setCpf(cpf);
         obj.setCep(cep);

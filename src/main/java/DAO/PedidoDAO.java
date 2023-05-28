@@ -3,12 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
-
-import Classes.Cliente;
 import Classes.Pedido;
-import static DAO.ClienteDAO.Login;
-import static DAO.ClienteDAO.Senha;
-import static DAO.ClienteDAO.URL;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,7 +19,7 @@ public class PedidoDAO {
 
     static String URL = "jdbc:mysql://localhost:3306/casadecarne";
     static String Login = "root";
-    static String Senha = "P@$$word";
+    static String Senha = "A@1090073061a";
 
     public static boolean adicionar(Pedido obj) {
         boolean retorno = false;

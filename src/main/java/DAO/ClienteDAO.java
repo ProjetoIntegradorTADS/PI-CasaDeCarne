@@ -220,7 +220,7 @@ public class ClienteDAO {
             conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
             
             PreparedStatement comando = conexao.
-            prepareStatement("UPDATE cliente SET nome = ?, cpf =?, cep = ?, email = ?, endereco = ?, numero = ?, sexo = ?, complemento = ? WHERE cpf = ?");
+            prepareStatement("UPDATE cliente SET nome = ?, cpf =?, cep = ?, email = ?, endereco = ?, numero = ?, sexo = ?, complemento = ? WHERE cod_cli = ?");
           
             
             comando.setString(1, obj.getNome());
@@ -231,7 +231,7 @@ public class ClienteDAO {
             comando.setString(6, obj.getNumEndereco());
             comando.setString(7, obj.getSexo());
             comando.setString(8, obj.getComplemento());
-            comando.setString(9, obj.getCpf());
+            comando.setInt(9, obj.getIdCliente());
             
             
             int linhasAfetadas = comando.executeUpdate();

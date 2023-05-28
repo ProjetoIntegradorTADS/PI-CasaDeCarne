@@ -1,74 +1,65 @@
-
 package Classes;
 
 import java.util.ArrayList;
 
 /* Classe com informacoes do Produto  */
-
-    
-
 public class Produto {
-    
-   
 
-        private ArrayList<Produto> listaProdutos = null;
+    private ArrayList<Produto> listaItens = null;
 
-        public ArrayList<Produto> getListaProdutos() {
-        return listaProdutos;
+    public ArrayList<Produto> getListaProdutos() {
+        return listaItens;
     }
 
-        public void setListaProdutos(ArrayList<Produto> listaProdutos) {
-        this.listaProdutos = listaProdutos;
+    public void setListaProdutos(ArrayList<Produto> listaProdutos) {
+        this.listaItens = listaProdutos;
     }
-       
-        public Produto(){
-            
-        }
-        
-        
-        
+
+    public Produto() {
+
+    }
+
     public Produto(int codProduto, String nomeProduto, float valorProduto, float quantidade) {
         this.codProduto = codProduto;
         this.nomeProduto = nomeProduto;
         this.valorProduto = valorProduto;
         this.quantidade = quantidade;
     }
-        private int codProduto;
-        private String nomeProduto;
-        private float valorProduto;
-        private float quantidade;
+    private int codProduto;
+    private String nomeProduto;
+    private float valorProduto;
+    private float quantidade;
 
-        public int getCodProduto() {
-            return codProduto;
-        }
+    public int getCodProduto() {
+        return codProduto;
+    }
 
-        public void setCodProduto(int codProduto) {
-            this.codProduto = codProduto;
-        }
-        public String getNomeProduto() {
-            return nomeProduto;
-        }
+    public void setCodProduto(int codProduto) {
+        this.codProduto = codProduto;
+    }
 
-        public void setNomeProduto(String nomeProduto) {
-            this.nomeProduto = nomeProduto;
-        }
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
 
-        public float getValorProduto() {
-            return valorProduto;
-        }
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
 
-        public void setValorProduto(float valorProduto) {
-            this.valorProduto = valorProduto;
-        }
+    public float getValorProduto() {
+        return valorProduto;
+    }
 
-        public float getQuantidade() {
-            return quantidade;
-        }
+    public void setValorProduto(float valorProduto) {
+        this.valorProduto = valorProduto;
+    }
 
-        public void setQuantidade(float quantidade) {
-            this.quantidade = quantidade;
-        }
-         
-      
-        }
+    public float getQuantidade() {
+        return quantidade;
+    }
 
+    public void setQuantidade(float quantidade) {
+        this.quantidade = quantidade;
+    }
+
+}

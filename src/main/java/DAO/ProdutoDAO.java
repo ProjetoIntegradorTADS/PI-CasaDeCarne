@@ -1,7 +1,5 @@
-
 package DAO;
 
-import Classes.Cliente;
 import Classes.Produto;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -50,35 +48,35 @@ public class ProdutoDAO {
         return retorno;
 
     }
-     public static boolean excluir (int id){
+
+    public static boolean excluir(int id) {
         boolean retorno = false;
         Connection conexao = null;
-        
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
             PreparedStatement comando = conexao.
                     prepareStatement("DELETE FROM estoque WHERE idProduto = ?");
-            
+
             comando.setInt(1, id);
-                        
+
             int linhasAfetadas = comando.executeUpdate();
-            
-            if(linhasAfetadas>0){
+
+            if (linhasAfetadas > 0) {
                 retorno = true;
             }
-            
+
         } catch (ClassNotFoundException ex) {
             System.out.println("Erro ao carregar o driver");
         } catch (SQLException ex) {
             System.out.println("Erro ao conectar com o banco");
         }
-        
-        
+
         return retorno;
     }
-     
-  public static ArrayList<Produto> mostraTudo() {
+
+    public static ArrayList<Produto> mostraTudo() {
 
         ArrayList<Produto> lista = new ArrayList<>();
         Connection conexao = null;
@@ -94,9 +92,9 @@ public class ProdutoDAO {
                     Produto objProduto = new Produto();
                     objProduto.setCodProduto(rs.getInt("idProduto"));
                     objProduto.setNomeProduto(rs.getString("nomeProd"));
-                    objProduto.setQuantidade(rs.getFloat("vlrProd"));
+                    objProduto.setQuantidade(rs.getFloat("qntProd"));
                     objProduto.setValorProduto(rs.getFloat("vlrProd"));
-                    
+
                     lista.add(objProduto);
 
                 }
@@ -110,9 +108,9 @@ public class ProdutoDAO {
 
         return lista;
     }
-  public static ArrayList<Produto> buscarPorNome(String nomeProd) {
 
-       
+    public static ArrayList<Produto> buscarPorNome(String nomeProd) {
+
         ArrayList<Produto> listar = new ArrayList<>();
         Connection conexao = null;
 
@@ -132,7 +130,6 @@ public class ProdutoDAO {
                     consultaPorNome.setNomeProduto(rs.getString("nomeProd"));
                     consultaPorNome.setQuantidade(rs.getFloat("qntProd"));
                     consultaPorNome.setValorProduto(rs.getFloat("vlrProd"));
-                 
 
                     listar.add(consultaPorNome);
 
@@ -147,43 +144,38 @@ public class ProdutoDAO {
 
         return listar;
     }
-  public static boolean alterar(Produto obj){
-      boolean retorno = false;
+
+    public static boolean alterarEstoque(Produto obj) {
+        boolean retorno = false;
         Connection conexao = null;
-        
+
         try {
-            
+
             Class.forName("com.mysql.cj.jdbc.Driver");
-           
+
             conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
-            
+
             PreparedStatement comando = conexao.
-            prepareStatement("UPDATE estoque SET nomeProd = ?, qntProd =?, vlrProd = ? WHERE nomeProd = ?");
-          
+            prepareStatement("UPDATE estoque SET nomeProd = ?, qntProd =?, vlrProd = ? WHERE idProduto = ?");
             
             comando.setString(1, obj.getNomeProduto());
             comando.setFloat(2, obj.getQuantidade());
             comando.setFloat(3, obj.getValorProduto());
-            comando.setString(4, obj.getNomeProduto());
-            
-            
-            
+            comando.setInt(4, obj.getCodProduto());
+
             int linhasAfetadas = comando.executeUpdate();
-            
-            if(linhasAfetadas>0){
+
+            if (linhasAfetadas > 0) {
                 retorno = true;
             }
-            
+
         } catch (ClassNotFoundException ex) {
             System.out.println("Erro ao carregar o driver");
         } catch (SQLException ex) {
             System.out.println("Erro ao conectar com o banco");
         }
-        
-        
+
         return retorno;
-         
-     }
+
+    }
 }
-
-
