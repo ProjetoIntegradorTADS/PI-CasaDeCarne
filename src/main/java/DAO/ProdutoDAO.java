@@ -21,7 +21,7 @@ public class ProdutoDAO {
 
     static String URL = "jdbc:mysql://localhost:3306/casadecarne";
     static String Login = "root";
-    static String Senha = "p@$$w0rd";
+    static String Senha = "A@1090073061a";
 
     public static boolean adicionarEstoque(Produto obj) {
         boolean retorno = false;
@@ -31,7 +31,7 @@ public class ProdutoDAO {
 
             Connection conexao = DriverManager.getConnection(URL, Login, Senha);
 
-            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO estoque (nome_prod,quantidade,valorPorKg ) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO estoque (nomeProd,qntProd,vlrProd ) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
 
             comandoSQL.setString(1, obj.getNomeProduto());
             comandoSQL.setFloat(2, obj.getQuantidade());
@@ -56,9 +56,9 @@ public class ProdutoDAO {
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "p@$$w0rd");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
             PreparedStatement comando = conexao.
-                    prepareStatement("DELETE FROM estoque WHERE cod_prod = ?");
+                    prepareStatement("DELETE FROM estoque WHERE idProduto = ?");
             
             comando.setInt(1, id);
                         
@@ -77,40 +77,7 @@ public class ProdutoDAO {
         
         return retorno;
     }
-     public static boolean alterar(Produto obj){
-      boolean retorno = false;
-        Connection conexao = null;
-        
-        try {
-            
-            Class.forName("com.mysql.cj.jdbc.Driver");
-           
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "p@$$w0rd");
-            
-            PreparedStatement comando = conexao.
-            prepareStatement("UPDATE estoque SET nomeProd = ?, qntProd =?, vlrProd = ?, WHERE cod_prod = ?");
-           
-            
-            comando.setString(1, obj.getNomeProduto());
-            comando.setFloat(2, obj.getQuantidade());
-            comando.setFloat(3, obj.getValorProduto());
-    
-            int linhasAfetadas = comando.executeUpdate();
-            
-            if(linhasAfetadas>0){
-                retorno = true;
-            }
-            
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Erro ao carregar o driver");
-        } catch (SQLException ex) {
-            System.out.println("Erro ao conectar com o banco");
-        }
-        
-        
-        return retorno;
-         
-     }
+     
   public static ArrayList<Produto> mostraTudo() {
 
         ArrayList<Produto> lista = new ArrayList<>();
@@ -118,17 +85,17 @@ public class ProdutoDAO {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "p@$$w0rd");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
             PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM estoque");
             ResultSet rs = comandoSQL.executeQuery();
 
             if (rs != null) {
                 while (rs.next()) {
                     Produto objProduto = new Produto();
-                    objProduto.setCodProduto(rs.getInt("cod_prod"));
-                    objProduto.setNomeProduto(rs.getString("nome_prod"));
-                    objProduto.setQuantidade(rs.getFloat("quantidade"));
-                    objProduto.setValorProduto(rs.getFloat("valorPorKg"));
+                    objProduto.setCodProduto(rs.getInt("idProduto"));
+                    objProduto.setNomeProduto(rs.getString("nomeProd"));
+                    objProduto.setQuantidade(rs.getFloat("vlrProd"));
+                    objProduto.setValorProduto(rs.getFloat("vlrProd"));
                     
                     lista.add(objProduto);
 
@@ -142,5 +109,42 @@ public class ProdutoDAO {
         }
 
         return lista;
+    }
+  public static ArrayList<Produto> buscarPorNome(String nomeProd) {
+
+       
+        ArrayList<Produto> listar = new ArrayList<>();
+        Connection conexao = null;
+
+        try {
+
+            // String cpf = cpfInfo;
+            String sql = "SELECT * FROM estoque where nomeProd = '" + nomeProd + "'";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
+            PreparedStatement comandoSQL = conexao.prepareStatement(sql);
+            ResultSet rs = comandoSQL.executeQuery();
+
+            if (rs != null) {
+                while (rs.next()) {
+                    Produto consultaPorNome = new Produto();
+                    consultaPorNome.setCodProduto(rs.getInt("idProduto"));
+                    consultaPorNome.setNomeProduto(rs.getString("nomeProd"));
+                    consultaPorNome.setQuantidade(rs.getFloat("qntProd"));
+                    consultaPorNome.setValorProduto(rs.getFloat("vlrProd"));
+                 
+
+                    listar.add(consultaPorNome);
+
+                }
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return listar;
     }
 }

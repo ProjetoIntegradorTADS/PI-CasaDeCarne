@@ -1,13 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Classes;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author Filri
  */
 public class Data {
-    
+   
+   public static void main(String args[])throws ParseException {
+      Date date = new Date();
+      SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+       String str = formatter.format(date);
+      System.out.print("Current date: "+str);
+   }
 }
+

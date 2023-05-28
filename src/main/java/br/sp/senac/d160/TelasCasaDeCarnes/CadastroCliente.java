@@ -584,7 +584,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         CRUD_Cliente cliente = new CRUD_Cliente();
         cliente.setVisible(true);
-        cliente.setDefaultCloseOperation(Estoque.DISPOSE_ON_CLOSE);
+        cliente.setDefaultCloseOperation(CadastroProdutos.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed

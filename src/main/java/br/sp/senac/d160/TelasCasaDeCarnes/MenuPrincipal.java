@@ -147,9 +147,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void btnProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutoActionPerformed
 
         //Instanciando a tela 
-        Estoque tela = new Estoque();
+        CadastroProdutos tela = new CadastroProdutos();
         tela.setVisible(true);
-        tela.setDefaultCloseOperation(Estoque.DISPOSE_ON_CLOSE);
+        tela.setDefaultCloseOperation(CadastroProdutos.DISPOSE_ON_CLOSE);
         //fechar a tela de login apos ter entrado
         //this.dispose();
     }//GEN-LAST:event_btnProdutoActionPerformed
