@@ -49,7 +49,7 @@ public class CadastroProdutos extends javax.swing.JFrame {
         txtValorAdcPrdt = new javax.swing.JTextField();
         lblInfo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnTelaProp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,10 +144,10 @@ public class CadastroProdutos extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Acesso as propiedades"));
 
-        jButton1.setText("Propiedades Estoque");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnTelaProp.setText("Propiedades Estoque");
+        btnTelaProp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnTelaPropActionPerformed(evt);
             }
         });
 
@@ -157,14 +157,14 @@ public class CadastroProdutos extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTelaProp, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(7, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnTelaProp)
                 .addContainerGap())
         );
 
@@ -245,12 +245,9 @@ public class CadastroProdutos extends javax.swing.JFrame {
     private void btnAdcEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdcEstoqueActionPerformed
     
          if (objProduto != null && objProduto.getNomeProduto()!= null) {
-
-            
-            
             String nome = (txtNomeAdcPrdt.getText());
-            Float qntProd = Float.parseFloat(txtQntAdcPrdt.getText());
-            Float vlrProd = Float.parseFloat(txtValorAdcPrdt.getText());
+            Float qntProd = Float.parseFloat(txtQntAdcPrdt.getText().toString());
+            Float vlrProd = Float.parseFloat(txtValorAdcPrdt.getText().toString());
 
             Produto objProduto = new Produto();
             
@@ -290,13 +287,13 @@ public class CadastroProdutos extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Falha na Adição");
         }
-        
+         }
     }//GEN-LAST:event_btnAdcEstoqueActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnTelaPropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelaPropActionPerformed
     CRUD_Estoque estoque = new CRUD_Estoque();
     estoque.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnTelaPropActionPerformed
 
     /**
      * @param args the command line arguments
@@ -343,7 +340,7 @@ public class CadastroProdutos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AdicionarProduto;
     private javax.swing.JButton btnAdcEstoque;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnTelaProp;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblInfo;
     private javax.swing.JLabel lblNomeAdcPrdt;

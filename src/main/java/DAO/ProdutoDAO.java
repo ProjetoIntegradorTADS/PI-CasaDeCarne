@@ -147,4 +147,43 @@ public class ProdutoDAO {
 
         return listar;
     }
+  public static boolean alterar(Produto obj){
+      boolean retorno = false;
+        Connection conexao = null;
+        
+        try {
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+           
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/casadecarne", "root", "A@1090073061a");
+            
+            PreparedStatement comando = conexao.
+            prepareStatement("UPDATE estoque SET nomeProd = ?, qntProd =?, vlrProd = ? WHERE nomeProd = ?");
+          
+            
+            comando.setString(1, obj.getNomeProduto());
+            comando.setFloat(2, obj.getQuantidade());
+            comando.setFloat(3, obj.getValorProduto());
+            comando.setString(4, obj.getNomeProduto());
+            
+            
+            
+            int linhasAfetadas = comando.executeUpdate();
+            
+            if(linhasAfetadas>0){
+                retorno = true;
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Erro ao carregar o driver");
+        } catch (SQLException ex) {
+            System.out.println("Erro ao conectar com o banco");
+        }
+        
+        
+        return retorno;
+         
+     }
 }
+
+

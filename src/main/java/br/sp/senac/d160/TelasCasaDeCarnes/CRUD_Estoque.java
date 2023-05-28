@@ -188,18 +188,18 @@ public class CRUD_Estoque extends javax.swing.JFrame {
         
         DefaultTableModel modelo = (DefaultTableModel)tblEstoque.getModel();
         String nomeProd = (modelo.getValueAt(indiceLinha, 1).toString());
-        String qntProd = (modelo.getValueAt(indiceLinha, 2).toString());
-        String vlrProd = (modelo.getValueAt(indiceLinha, 3).toString());
+        Float qntProd = Float.parseFloat(modelo.getValueAt(indiceLinha, 2).toString());
+        Float vlrProd = Float.parseFloat(modelo.getValueAt(indiceLinha, 3).toString());
      
         
-        Cliente obj = new Cliente();
-        obj.setNome(nomeProd);
-        obj.setCpf(qntProd);
-        obj.setCep(vlrProd);
+        Produto obj = new Produto();
+        obj.setNomeProduto(nomeProd);
+        obj.setQuantidade(qntProd);
+        obj.setValorProduto(vlrProd);
       
         
-        CadastroProdutos telaCadastro = new CadastroProdutos(objProduto);
-        telaCadastro.setVisible(true);
+        CadastroProdutos telaCadProd = new CadastroProdutos(obj);
+        telaCadProd.setVisible(true);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
